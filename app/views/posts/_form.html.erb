@@ -1,29 +1,29 @@
 <%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 my-5 mx-auto form-wrapper text-center">
+
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+          <ul>
+            <% post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <h1>Créer une Publication</h1>
+
+
+        <%= form.text_field :title, placeholder: 'Titre', class: 'form-control' %>
+        <%= form.text_area :body, placeholder: 'Description', class: 'form-control' %>
+        <%= form.select :category_id, Category.all.map {|c| [c.category, c.id] } %>
+        <%= form.submit "Publier", class: 'form-control btn btn-success'%>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <%= form.select :category_id, Category.all.map {|c| [c.category, c.id] } %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

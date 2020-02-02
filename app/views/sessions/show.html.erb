@@ -1,0 +1,47 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 profile-wrapper">
+      <h3> <%= current_user.name %> </h3>
+  
+      <hr>
+       <h6> <i class="fas fa-user-edit"></i> <%= link_to "Edit profile", edit_user_registration_path, class: "profile-buttons" %> </h6>
+      <hr>
+       <h6> <i class="fas fa-plus-circle"></i> <%= link_to "Add a post", new_post_path, class: "profile-buttons"  %> </h6>
+      <hr>
+       <h6> <i class="fas fa-sign-out-alt"></i> <%= link_to t('auth.sign_out'), destroy_user_session_path, method: 'delete', class: "profile-buttons" %></h6>
+      <hr>
+
+    </div>
+
+
+
+<div class="col-md-6 posts-wrapper">
+  <h2>My posts</h2>
+<table class="table">
+  <tr>
+    <thead>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Faculty</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+
+
+    <% current_user.posts.each do |p| %>
+    <tbody>
+    <td><%= p.title %></td>
+    <td><%= p.body %></td>
+    <td><%= p.category.category %></td>
+    <td><%= link_to "View", p, class: "btn btn-success" %></td>
+    <td><%= link_to "Edit", edit_post_path(p), class: "btn btn-primary" %></td>
+    <td><%= link_to "Delete", p, method: :delete, class: "btn btn-danger" %></td>
+    </tbody>
+    <% end %>
+
+
+</table>
+    </div>
+  </div>
+</div>
