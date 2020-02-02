@@ -4,7 +4,7 @@
     <title>Practice</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/579c92a99f.js" crossorigin="anonymous"></script>
@@ -12,15 +12,7 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-    <div class="alert-success" >
-      <%= notice %>
-    </div>
-
-    <div class="alert-success" >
-      <%= alert %>
-    </div>
+    
     <%= yield %>
 
 
