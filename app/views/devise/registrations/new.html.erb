@@ -1,31 +1,25 @@
-<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <%= f.text_field :name, autofocus: true, placeholder: 'Your name', class: "form-control" %>
-  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 login-box my-5 text-center">
+        <h2>Sign up</h2>
+        <%= f.text_field :name, autofocus: true, placeholder: 'Your name', class: "form-control" %>
+        <%= f.email_field :email, autofocus: true, placeholder: 'Your email', class: "form-control" %>
+        <%= f.password_field :password, placeholder: 'Your password', class: "form-control"  %>
+        <%= f.password_field :password_confirmation, placeholder: 'Confirm password', class: "form-control"  %>
+        <%= f.submit "Sign up", class: 'btn btn-primary' %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+      <% end %>
+      <br>
+      <em>Or</em><%= render "devise/shared/links" %>
+      </div>
+      <div class="col-md-6 my-4">
+        <%= image_tag 'login.png', class:"login-img img-fluid" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
