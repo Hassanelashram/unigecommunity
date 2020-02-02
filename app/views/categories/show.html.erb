@@ -1,9 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Category:</strong>
-  <%= @category.category %>
-</p>
+  <div class="row">
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+    <% @category.posts.each do |p| %>
+      <div class="col">
+          <div class="card m-1" style="max-width: 18rem; height: 100%;">
+
+
+          <div class="card-body">
+            <h5 class="card-title">  <%= p.title  %>  </h5>
+            <p class="card-text"><%= p.body %> </p>
+
+            <span>   <%= link_to "View", p, class: "btn btn-primary"  %> </span>
+          </div>
+        </div>
+
+          </div>
+
+      <% end %>
+
+
+  </div>
+
+
+  </div>

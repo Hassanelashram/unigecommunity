@@ -91,6 +91,7 @@ tbody{
   -webkit-box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
+width: 200px;
 }
 
 .post-details{
@@ -98,8 +99,10 @@ box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
   -webkit-box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
+width: 200px;
 }
 
 .avatar{
   border-radius: 100%;
+  width: 100px;
 }
