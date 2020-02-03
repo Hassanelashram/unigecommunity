@@ -106,3 +106,8 @@ width: 200px;
   border-radius: 100%;
   width: 100px;
 }
+
+footer{
+  background-color: darkgray;
+  height: 100px;
+}
