@@ -1,15 +1,18 @@
 <div class="container">
 
-  <div class="row">
+  <div class="row my-5">
+
+<div class="col-12 text-center mb-5">
+  <h2> <%= @category.category %> </h2>
+</div>
 
     <% @category.posts.each do |p| %>
-      <div class="col">
-          <div class="card m-1" style="max-width: 18rem; height: 100%;">
+      <div class="col-3 my-3">
+          <div class="card m-1" style="max-width: 20rem; height: 100%;">
 
 
           <div class="card-body">
-            <h5 class="card-title">  <%= p.title  %>  </h5>
-            <p class="card-text"><%= p.body %> </p>
+            <h5 class="card-title">  <%= p.title  %>  </h5> <br>
 
             <span>   <%= link_to "View", p, class: "btn btn-primary"  %> </span>
           </div>

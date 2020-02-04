@@ -1,27 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row  my-5">
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.category %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2 class="text-center col-12"> Facultés </h2>
 
-<br>
+<%  @categories.each do |category| %>
+<div class="col-md-4 text-center my-4 ">
+    <div class="card m-1" style="max-width: 18rem; height: 100%;">
 
-<%= link_to 'New Category', new_category_path %>
+
+    <div class="card-body">
+      <h5 class="card-title text-center"> <%= link_to category.category , category %> </h5>
+      <%= category.posts.count %><a> <i class="far fa-copy"></i> </a>
+
+    </div>
+  </div>
+
+    </div>
+<% end %>
+
+
+</div>
+</div>

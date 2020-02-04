@@ -49,7 +49,11 @@ box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
 
 select{
   width: 300px;
+  background-color: green;
+  color: white;
+  height: 50px;
 }
+
 
 .image-card{
   height: 220px;
@@ -99,7 +103,7 @@ width: 200px;
   -webkit-box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.75);
-width: 200px;
+height: 300px;
 }
 
 .avatar{
@@ -109,5 +113,5 @@ width: 200px;
 
 footer{
   background-color: darkgray;
-  height: 100px;
+  min-height: 100px;
 }

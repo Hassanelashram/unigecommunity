@@ -33,4 +33,30 @@
 </div>
 
 
+
+
+
+<div class="row faculty-section my-5">
+
+<h2 class="text-center col-12">  Latest posts </h2>
+
+<%  @posts.each do |p| %>
+<div class="col-md-4 text-center my-4 ">
+    <div class="card m-1" style="max-width: 18rem; height: 100%;">
+
+
+    <div class="card-body">
+      <h5 class="card-title text-center"> <%= link_to p.title , p %> </h5>
+        <span>   <%= link_to "View", p, class: "btn btn-primary"  %> </span>
+
+    </div>
+  </div>
+
+    </div>
+<% end %>
+
+
+
+</div>
+
 </div>
