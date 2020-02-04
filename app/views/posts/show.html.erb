@@ -8,15 +8,12 @@
         <hr>
       <h4 class=""><strong>Description:</strong></h4>
           <p><em class=""><%= @post.body %></em></p>
-      <%= image_tag @post.image.url(:medium), class: ' mt-2' %>
-      <h5>Documents Disponible:</h5>
-      <h5> <i class="fas fa-file-download"><%= link_to @post.document_file_name, @post.document.url, target: "_blank" %></i> | <i class="fas fa-file-download"> <%= link_to @post.document_two_file_name, @post.document_two.url, target: "_blank" %></i> </h2>
+      <%= image_tag @post.picture.url, class: ' mt-2' %>
     </div>
 
 
 
   <div class="col-4 m-2 post-details text-center">
-    <%= image_tag @post.user.avatar.url(:medium), class: 'avatar mt-2' %>
     <h2> <%=  @post.user.name %> </h2>
     <hr>
     <p> <i class="far fa-envelope"></i> <%=  @post.user.email %> </p>
