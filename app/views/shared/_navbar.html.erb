@@ -21,18 +21,18 @@
         <ul class="navbar-nav mr-5">
           <form class="form-inline my-2 my-lg-0">
             <% if !user_signed_in? %>
-            <%= link_to "Add a post", new_user_session_path, class: "btn btn-success ml-3" %>
+            <%= link_to "Publier", new_user_session_path, class: "btn btn-success ml-3" %>
             <% end %>
 
 
             <%- if user_signed_in? %>
 
-                  <%= link_to "Add a post", new_post_path, class: " mr-2 btn btn-success"  %>
-                  <%= link_to "Dashboard", profile_path, class: "btn btn-success"  %>
+                  <%= link_to "Publier", new_post_path, class: " mr-2 btn btn-success"  %>
+                  <%= link_to "Profile", profile_path, class: "btn btn-success"  %>
 
             <% else %>
-              <li><%= link_to t('auth.sign_in'), new_user_session_path, class: "btn btn-success ml-3" %></li>
-              <li><%= link_to t('auth.sign_up'), new_user_registration_path, class: "btn btn-success ml-3" %></li>
+              <li><%= link_to "Se connecter", new_user_session_path, class: "btn btn-success ml-3" %></li>
+              <li><%= link_to "Rejoindre", new_user_registration_path, class: "btn btn-success ml-3" %></li>
             <% end %>
           </form>
         </ul>

@@ -7,16 +7,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 login-box my-5 text-center">
-        <h2>Sign up</h2>
-        <%= f.text_field :name, autofocus: true, placeholder: 'Your name', class: "form-control" %>
-        <%= f.email_field :email, autofocus: true, placeholder: 'Your email', class: "form-control" %>
-        <%= f.password_field :password, placeholder: 'Your password', class: "form-control"  %>
-        <%= f.password_field :password_confirmation, placeholder: 'Confirm password', class: "form-control"  %>
-        <%= f.submit "Sign up", class: 'btn btn-primary' %>
+        <h2>Rejoins nous!</h2>
+        <%= f.text_field :name, autofocus: true, placeholder: 'Nom Complet', class: "form-control" %>
+        <%= f.email_field :email, autofocus: true, placeholder: 'Ton email', class: "form-control" %>
+        <%= f.password_field :password, placeholder: 'Mot de passe', class: "form-control"  %>
+        <%= f.password_field :password_confirmation, placeholder: 'Confirmation mot de passe', class: "form-control"  %>
+        <%= f.submit "Rejoindre", class: 'btn btn-primary' %>
 
       <% end %>
       <br>
-      <em>Or</em><%= render "devise/shared/links" %>
+  <br><%= render "devise/shared/links" %>
       </div>
       <div class="col-md-6 my-4">
         <%= image_tag 'login.png', class:"login-img img-fluid" %>

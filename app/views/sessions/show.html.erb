@@ -8,25 +8,30 @@
       <h3> <%= current_user.name %> </h3>
 
       <hr>
-       <h6> <i class="fas fa-user-edit"></i> <%= link_to "Edit profile", edit_user_registration_path, class: "profile-buttons" %> </h6>
+       <h6> <i class="fas fa-user-edit"></i> <%= link_to "Modifier Profile", edit_user_registration_path, class: "profile-buttons" %> </h6>
       <hr>
-       <h6> <i class="fas fa-plus-circle"></i> <%= link_to "Add a post", new_post_path, class: "profile-buttons"  %> </h6>
+       <h6> <i class="fas fa-plus-circle"></i> <%= link_to "Publier", new_post_path, class: "profile-buttons"  %> </h6>
       <hr>
-       <h6> <i class="fas fa-sign-out-alt"></i> <%= link_to t('auth.sign_out'), destroy_user_session_path, method: 'delete', class: "profile-buttons" %></h6>
+       <h6> <i class="fas fa-sign-out-alt"></i> <%= link_to "Se Déconnecter", destroy_user_session_path,  method: 'delete', data: {confirm: "Are you sure?"}, class: "profile-buttons" %></h6>
       <hr>
       <h6> <%= link_to "Create Category", new_category_path if current_user.admin? %> </h6>
 
     </div>
 
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+
 
 
 <div class="col posts-wrapper">
-  <h2>My posts</h2>
+  <h2>Mes publications</h2>
 <table class="table">
   <tr>
     <thead>
-    <th scope="col">Title</th>
-    <th scope="col">Faculty</th>
+    <th scope="col">Titre</th>
+    <th scope="col">Faculté</th>
     <th scope="col"></th>
   </tr>
   </thead>
@@ -36,10 +41,35 @@
     <tbody>
     <td><%= p.title %></td>
     <td><%= p.category.category %></td>
-    <td><%= link_to "View", p, class: "btn btn-success" %></td>
-    <td><%= link_to "Edit", edit_post_path(p), class: "btn btn-primary" %></td>
-    <td><%= link_to "Delete", p, method: :delete, class: "btn btn-danger" %></td>
+    <td><%= link_to "Voir", p, class: "btn btn-success" %></td>
+    <td><%= link_to "Modifier", edit_post_path(p), class: "btn btn-primary" %></td>
+    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+      Supprimer
+    </button></td>
     </tbody>
+
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Vous êtes sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Vous ne pourrez plus le récuperez.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger"><%= link_to "Supprimer", p, method: :delete, class: "btn btn-danger" %></button>
+          </div>
+        </div>
+      </div>
+    </div>
     <% end %>
 
 
