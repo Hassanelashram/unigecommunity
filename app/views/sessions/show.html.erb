@@ -2,6 +2,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 profile-wrapper text-center">
+      <% if current_user.avatar.present? %>
+      <%= image_tag current_user.avatar.url, class: 'avatar m-2' %>
+      <% end %>
       <h3> <%= current_user.name %> </h3>
 
       <hr>
@@ -11,6 +14,7 @@
       <hr>
        <h6> <i class="fas fa-sign-out-alt"></i> <%= link_to t('auth.sign_out'), destroy_user_session_path, method: 'delete', class: "profile-buttons" %></h6>
       <hr>
+      <h6> <%= link_to "Create Category", new_category_path if current_user.admin? %> </h6>
 
     </div>
 
@@ -42,4 +46,6 @@
 </table>
     </div>
   </div>
+
+
 </div>

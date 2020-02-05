@@ -17,7 +17,7 @@
 <div class="col-md-4 text-center my-4 ">
     <div class="card m-1" style="max-width: 18rem; height: 100%;">
 
-
+    <%= image_tag category.catimage.url, class: "card-img-top" %>
     <div class="card-body">
       <h5 class="card-title text-center"> <%= link_to category.category , category %> </h5>
       <%= category.posts.count %><a> <i class="far fa-copy"></i> </a>
@@ -27,7 +27,6 @@
 
     </div>
 <% end %>
-<%= link_to "Add a post", new_post_path, class: " mb-3 mx-auto  btn btn-success"  %>
 
 
 </div>

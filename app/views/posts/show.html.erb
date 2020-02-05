@@ -2,7 +2,9 @@
 <div class="container">
   <div class="row my-4">
     <div class="col">
+        <% if @post.picture.present? %>
         <%= image_tag @post.picture.url, class: 'image-show m-2' %>
+        <% end %>
     </div>
 
     <div class="col-3 m-2 post-details ">
@@ -13,12 +15,16 @@
       <hr>
       <p> <%= @post.body %> </p>
       <hr>
-      <p> Documents: <br> <i class="far fa-file"></i> <%= link_to "Télécharger", @post.document.url %> <br> <i class="far fa-file"></i> <%= link_to "Télécharger", @post.document_two.url %> </p>
+      <p> Documents: <br>
+
+     <i class="far fa-file"></i>  <%= link_to @post.document_identifier, @post.document.url %> <br> <i class="far fa-file"></i> <%= link_to @post.document_identifier, @post.document_two.url %> </p>
     </div>
 
 
     <div class="col-3 m-2 post-details text-center">
-<%= image_tag @post.user.avatar.url, class: 'avatar m-2' %>
+      <% if @post.user.avatar.present? %>
+        <%= image_tag @post.user.avatar.url, class: 'avatar m-2' %>
+      <% end %>
       <h2> <%=  @post.user.name %> </h2>
       <hr>
       <p> <i class="far fa-envelope"></i> <%=  @post.user.email %> </p>
