@@ -23,6 +23,8 @@
         <%= form.text_area :body, placeholder: 'Description', class: 'form-control' %>
         <%= form.select :category_id, Category.all.map {|c| [c.category, c.id] } %><br><br>
         <label for="">Télécharger une image:     <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %></label>
+        <label for="">Télécharger un Document:     <%= form.file_field :document %></label>
+        <label for="">Télécharger un autre:     <%= form.file_field :document_two %></label>
         <%= form.submit "Publier", class: 'form-control btn btn-success'%>
       <% end %>
     </div>

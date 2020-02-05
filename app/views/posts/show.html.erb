@@ -1,25 +1,30 @@
 
 <div class="container">
   <div class="row my-4">
-    <div class="col-7 m-2 post-show">
-      <h3 class="my-2"> <strong>Titre:</strong> <em><%= @post.title %></em> </h3>
-        <hr>
-      <h4> <strong> Faculté: </strong> <em> <%= @post.category.category %></em></h4>
-        <hr>
-      <h4 class=""><strong>Description:</strong></h4>
-          <p><em class=""><%= @post.body %></em></p>
-      <%= image_tag @post.picture.url, class: ' mt-2' %>
+    <div class="col">
+        <%= image_tag @post.picture.url, class: 'image-show m-2' %>
+    </div>
+
+    <div class="col-3 m-2 post-details ">
+
+      <h2> <%=  @post.title %> </h2>
+      <hr>
+      <p> <%=  @post.category.category %> </p>
+      <hr>
+      <p> <%= @post.body %> </p>
+      <hr>
+      <p> Documents: <br> <i class="far fa-file"></i> <%= link_to "Télécharger", @post.document.url %> <br> <i class="far fa-file"></i> <%= link_to "Télécharger", @post.document_two.url %> </p>
     </div>
 
 
-
-  <div class="col-4 m-2 post-details text-center">
-    <h2> <%=  @post.user.name %> </h2>
-    <hr>
-    <p> <i class="far fa-envelope"></i> <%=  @post.user.email %> </p>
-    <hr>
-    <p>Contributions: <%= @post.user.posts.count %> </p>
-    <hr>
-  </div>
-  </div>
-</div>
+    <div class="col-3 m-2 post-details text-center">
+<%= image_tag @post.user.avatar.url, class: 'avatar m-2' %>
+      <h2> <%=  @post.user.name %> </h2>
+      <hr>
+      <p> <i class="far fa-envelope"></i> <%=  @post.user.email %> </p>
+      <hr>
+      <p>Contributions: <%= @post.user.posts.count %> </p>
+      <hr>
+    </div>
+    </div>
+    </div>

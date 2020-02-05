@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
   mount_uploader :picture, PictureUploader
+  mount_uploader :document, DocumentUploader
+  mount_uploader :document_two, DocumentTwoUploader
   validates :user_id, presence: true
   validates :category, presence: true
   validate :picture_size
