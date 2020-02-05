@@ -6,6 +6,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @user = User.count
+    @post = Post.all
     @posts = Post.order("created_at DESC").limit(6)
     @categories = Category.all
   end
