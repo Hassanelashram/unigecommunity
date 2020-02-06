@@ -8,14 +8,14 @@
 
 
 <div class="container">
-  
+
 
 <div class="row faculty-section my-5">
 
 <h2 class="text-center col-12"> <i class="fas fa-graduation-cap"></i> Facultés <i class="fas fa-graduation-cap"></i></h2>
 
 <%  @categories.each do |category| %>
-<div class="col-md-4 text-center my-4 ">
+<div class="col-sm-12 col-md-4 text-center my-4 ">
     <div class="card m-1" style="max-width: 18rem; height: 100%;">
 
     <% if category.catimage.url.present? %>
@@ -43,7 +43,7 @@
 <h2 class="text-center col-12">  Publications récentes </h2>
 
 <%  @posts.each do |p| %>
-<div class="col-md-4 text-center my-4 ">
+<div class="col-sm-12 col-md-4 text-center my-4 ">
     <div class="card m-1" style="max-width: 18rem; height: 100%;">
 
 
