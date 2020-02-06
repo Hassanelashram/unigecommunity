@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   validates :category, presence: true
   validate :picture_size
+  validates :title, presence: true
+  validates :body, presence: true
 
   private
   # Validates the size of an uploaded picture.
@@ -14,5 +16,5 @@ class Post < ApplicationRecord
       if picture.size > 5.megabytes
         errors.add(:picture, "should be less than 5MB")
       end
-end
+    end
 end

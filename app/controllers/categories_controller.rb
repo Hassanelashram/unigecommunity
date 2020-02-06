@@ -19,7 +19,9 @@ class CategoriesController < ApplicationController
     @category = Category.new
   else
     redirect_to root_url
+    flash[:warning] = "Sorry but there is nothing to see there"
   end
+  @categories = Category.all
   end
 
   # GET /categories/1/edit
