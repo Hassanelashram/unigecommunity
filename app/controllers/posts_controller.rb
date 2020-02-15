@@ -9,8 +9,8 @@ class PostsController < ApplicationController
     @user = User.count
     @post = Post.all
     @posts = Post.order("created_at DESC").limit(6)
-    @categories = Category.all
-    @category = Category.where(parent_id: nil)
+    @category = Category.where(parent_id: nil).limit(6)
+    @category = @category.order("created_at DESC")
   end
 
   # GET /posts/1

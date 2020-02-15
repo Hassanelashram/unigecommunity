@@ -25,6 +25,7 @@
      <% if @post.document_two.present? %>
      <i class="far fa-file"></i> <%= link_to @post.document_two_identifier, @post.document_two.url %> </p>
      <% end %>
+
     </div>
 
 
@@ -38,6 +39,7 @@
       <hr>
       <p>Contributions: <%= @post.user.posts.count %> </p>
       <hr>
+      <em>Publier le <%= @post.created_at.to_date %></em>
     </div>
     </div>
     </div>
