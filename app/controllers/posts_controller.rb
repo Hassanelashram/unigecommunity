@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post = Post.all
     @posts = Post.order("created_at DESC").limit(6)
     @categories = Category.all
+    @category = Category.where(parent_id: nil)
   end
 
   # GET /posts/1
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    @categories = Category.order('category ASC').where(parent_id: nil)
     @post = current_user.posts.build(post_params)
 
     respond_to do |format|

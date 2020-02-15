@@ -1,27 +1,40 @@
 <div class="container">
 
   <div class="row my-5">
-
 <div class="col-12 text-center mb-5">
   <h2> <%= @category.category %> </h2>
 </div>
 
-    <% @category.posts.each do |p| %>
-      <div class="col-3 my-3">
-          <div class="card m-1" style="max-width: 20rem; height: 100%;">
+<% if @category.children.present? %>
+<%  @category.children.each do |category| %>
+<div class="col-3 my-3">
+    <div class="card m-1" style="max-width: 20rem; height: 100%;">
 
+      <div class="card-body">
+        <h5 class="card-title">  <%= category.category %>  </h5> <br>
 
-          <div class="card-body">
-            <h5 class="card-title">  <%= p.title  %>  </h5> <br>
+        <span>   <%= link_to "View", category, class: "btn btn-primary"  %> </span>
+      </div>
+      </div>
 
-            <span>   <%= link_to "View", p, class: "btn btn-primary"  %> </span>
-          </div>
-        </div>
+      </div>
+<% end %>
 
-          </div>
+<% else %>
+<%  @category.posts.each do |p| %>
+<div class="col-3 my-3">
+    <div class="card m-1" style="max-width: 20rem; height: 100%;">
 
-      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">  <%= p.title %>  </h5> <br>
 
+        <span>   <%= link_to "View", p, class: "btn btn-primary"  %> </span>
+      </div>
+      </div>
+
+      </div>
+<% end %>
+<% end %>
 
   </div>
 

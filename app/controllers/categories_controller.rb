@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.order('category ASC')
   end
 
   # GET /categories/1
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
   def create
 
     @category = Category.new(category_params)
-
+@categories = Category.all
 
     respond_to do |format|
       if @category.save
@@ -78,6 +78,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:category, :catimage)
+      params.require(:category).permit(:category, :catimage, :parent_id)
     end
 end

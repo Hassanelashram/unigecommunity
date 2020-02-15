@@ -18,14 +18,20 @@
 
       <h1>Créer une Publication</h1>
 
-
         <%= form.text_field :title, placeholder: 'Titre', class: 'form-control' %>
         <%= form.text_area :body, placeholder: 'Description', class: 'form-control' %>
-        <%= form.select :category_id, Category.all.map {|c| [c.category, c.id] } %><br><br>
+        <%= form.select :category_id, Category.order('category ASC').where(parent_id: nil).map {|c| [c.category, c.id] }, {prompt: "Choisis une faculté:"} %><br><br>
+        <%= form.select :category_id, Category.order('category ASC').where.not(parent_id: nil).map {|c| [c.category, c.id] }, {prompt: "Choisis une matière:"} %><br><br>
         <label for="">Télécharger une image:     <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %></label>
         <label for="">Télécharger un Document:     <%= form.file_field :document %></label>
         <label for="">Télécharger un autre:     <%= form.file_field :document_two %></label>
         <%= form.submit "Publier", class: 'form-control btn btn-success'%>
+
+
+
+
+
+
       <% end %>
     </div>
   </div>
