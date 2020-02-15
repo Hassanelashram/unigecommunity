@@ -10,11 +10,30 @@
   </div>
 
   <div class="row">
-    <div class="col">
-      <h2>All categories</h2>
-      <% @categories.each do |c| %>
-          <%= link_to c.category, edit_category_url(c) %> <br>
-      <% end %>
-    </div>
-  </div>
+    <div class="col-8 m-auto">
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Actions</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |c| %>
+    <tr>
+      <td> <%= c.id %></td>
+      <td><%= c.category %> </td>
+      <td><%= link_to 'Edit', edit_category_url(c) , class:'btn btn-primary'%> </td>
+      <td><%= link_to 'Delete', c, method: :delete, class:'btn btn-danger', data: {confirm: "OOh huchanbe, t'est sure de toi ?"}%></td>
+      <td><%= link_to 'Show', c, class: 'btn btn-success' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
 </div>

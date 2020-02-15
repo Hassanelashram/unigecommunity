@@ -1,9 +1,11 @@
-
+<% content_for :title, "#{@post.title} | Unigecommunity" %>
 <div class="container">
   <div class="row my-4">
     <div class="col">
         <% if @post.picture.present? %>
         <%= image_tag @post.picture.url, class: 'image-show m-2' %>
+        <% else %>
+        <%= image_tag 'https://images.unsplash.com/photo-1514369118554-e20d93546b30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', class: 'image-show m-2' %>
         <% end %>
     </div>
 
@@ -17,7 +19,12 @@
       <hr>
       <p> Documents: <br>
 
-     <i class="far fa-file"></i>  <%= link_to @post.document_identifier, @post.document.url %> <br> <i class="far fa-file"></i> <%= link_to @post.document_two_identifier, @post.document_two.url %> </p>
+      <% if @post.document.present? %>
+     <i class="far fa-file"></i>  <%= link_to @post.document_identifier, @post.document.url %>
+     <% end %> <br>
+     <% if @post.document_two.present? %>
+     <i class="far fa-file"></i> <%= link_to @post.document_two_identifier, @post.document_two.url %> </p>
+     <% end %>
     </div>
 
 

@@ -1,3 +1,4 @@
+<% content_for :title, "Facultés | Unigecommunity" %>
 <p id="notice"><%= notice %></p>
 
 <div class="container">
@@ -13,7 +14,7 @@
     <div class="card-body">
       <h5 class="card-title text-center"> <%= link_to category.category , category %> </h5>
       <%= category.posts.count %><a> <i class="far fa-copy"></i> </a>
-      <%= category.children %>
+
     </div>
   </div>
 
