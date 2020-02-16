@@ -1,4 +1,11 @@
 <% content_for :title, "#{@category.category} | Unigecommunity" %>
+
+<% flash.each do |message_type, message| %>
+ <div class="my-5 alert alert-<%= message_type %>">
+   <%= message %>
+ </div>
+<% end %>
+
 <div class="container">
 
   <div class="row my-5">
