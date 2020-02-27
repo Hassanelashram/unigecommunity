@@ -10,13 +10,13 @@
     <div class="col-md-6 my-5 edit-box text-center mx-auto">
       <h2>Modifier son profile</h2>
       <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-      <%= f.email_field :email, autofocus: true, class: 'form-control'  %>
-
+      <%= f.email_field :email, autofocus: true, class: 'mb-3 form-control'  %>
+      <%= f.select :category_id, Category.order('category ASC').where(parent_id: nil).map {|c| [c.category, c.id] }, {prompt: "Choisis une faculté:"} %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
-      <label for="avatar">Ajouter une photo: </label>  <%= f.file_field :avatar %> <br>
+      <label class="mt-3" for="avatar">Ajouter une photo: </label>  <%= f.file_field :avatar, class: 'mt-3' %> <br>
 
       <br />
       <%= f.password_field :password, placeholder: "nouveau mot de passe", class: "form-control" %>

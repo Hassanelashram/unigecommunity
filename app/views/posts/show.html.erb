@@ -49,7 +49,7 @@
       <hr>
       <p>Contributions: <%= @post.user.posts.count %> </p>
       <hr>
-      <em>Publier le <%= @post.created_at.to_date %></em>
+      <em>Publier il y a <%= time_ago_in_words(@post.created_at) %></em>
     </div>
     </div>
     </div>

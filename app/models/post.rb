@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
+  has_many :comments
   mount_uploader :picture, PictureUploader
   mount_uploader :document, DocumentUploader
   mount_uploader :document_two, DocumentTwoUploader
@@ -9,6 +10,7 @@ class Post < ApplicationRecord
   validate :picture_size
   validates :title, presence: true
   validates :body, presence: true
+  has_many :comments
 
   private
   # Validates the size of an uploaded picture.

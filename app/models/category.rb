@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   has_many :posts
+  has_many :users
   mount_uploader :catimage, CatimageUploader
   validates :parent_id, presence: false
   belongs_to :parent, :class_name => 'Category', optional: true

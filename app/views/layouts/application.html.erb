@@ -5,10 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/579c92a99f.js" crossorigin="anonymous"></script>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157925391-1"></script>
 <script>
@@ -21,7 +21,7 @@
 
   </head>
 
-  <body>
+  <body class="bd">
 
     <%= render "shared/navbar" %>
 

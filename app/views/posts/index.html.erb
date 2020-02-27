@@ -8,78 +8,103 @@
 </div>
 
 
-
 <div class="container">
+        <!-- Two first options section -->
+          <div data-aos="fade-down" class="row">
+              <div class="col-12">
+                  <h2 class="title ml-5">Étudiez plus facilement <span class="span1">ensemble</span> </h2>
+                  <h4 class="subtitle ml-5">Rejoins plus de <%= @user %> Étudiants.</h4>
+              </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="header-box1 text-center">
+                    <br> <br><br>
+                    <h3 class="boxtitle">AIDEZ MA COMMUNAUTÉ</h3>
+                    <%= link_to new_post_path do %>
+                    <button class="button"><span> CONTRIBUER </span></button>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="header-box2 text-center">
+                    <br> <br> <br>
+                    <h3 class="boxtitle">CHERCHEZ UNE CONTRIBUTION</h3>
+                    <%= link_to categories_path do %>
+                  <button class="button"><span>CHERCHEZ </span></button>
+                    <% end %>
+                </div>
+             </div>
+           </div>
+
+    <!-- First options section end -->
+
+    <!-- Artists of the week -->
+           <div data-aos="fade-left" class="row">
+               <div class="col-12">
+                   <h2 class="title">
+                       Découvre les contributions de la <span class="span1"> Semaine </span>
+                   </h2>
+                   <h4 class="subtitle">Les plus récentes</h4>
+               </div>
+               <% @posts.each do |p| %>
+
+               <div class="col-sm-6 col-lg my-4">
+                 <%= link_to p do %>
+                <div onmouseover="showProfile()" onmouseout="hideProfile()" class="collection-box card" style="width: 15rem">
+                  <% if p.picture.present? %>
+                  <%= image_tag p.picture.url, class: " card-img-top" %>
+                  <% else %>
+                  <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
+                  <% end %>
+                    <div class="post-body card-body">
+                      <p class="card-text"><%= p.body.truncate(20) %> </p>
+                    </div>
+                  </div>
+               </div>
+               <% end %>
+                <% end %>
+                <br>
+               <div class="col-12">
+                 <%= link_to 'VOIR PLUS', categories_path, class: 'mybtn button' %>
+               </div>
+
+<!-- Artists of the week end -->
+
+<!-- Collections section -->
+           <div data-aos="fade-right" class="row my-5 ">
+               <div class="col-12 mb-3">
+                   <h2 class="title">
+                       Les Facultés sur  <span class="span1">Unige <i class="fas fa-graduation-cap"></i></span>
+                   </h2>
+                   <h4 class="subtitle">
+                       Les facultés les plus visités de la semaine
+                   </h4>
+               </div>
+
+               <%  @category.each do |category| %>
+               <div class="text-center mt-4 col-sm-6 col-lg">
+                <div class="collection-box card" style="width: 15rem">
+                  <% if category.catimage.url.present? %>
+                  <%= image_tag category.catimage.url, class: "card-img-top" %>
+                  <% end %>
+                    <div class="collection-body card-body">
+                        <h5 class="collection-title"><%= link_to category.category , category %></h5>
+                      <p class="card-text"><%= category.posts.count %> contributions</p>
+
+                    </div>
+                  </div>
+               </div>
+               <% end %>
+           </div>
+<!-- Collections end -->
+
+          </div>
 
 
-<div class="row faculty-section my-5">
-
-  <h2 class="text-center col-12"> <i class="fas fa-graduation-cap"></i> Facultés <i class="fas fa-graduation-cap"></i></h2>
-
-<%  @category.each do |category| %>
-<div class="col-sm-12 col-md-4 text-center my-4 ">
-    <div class="card m-1" style="max-width: 18rem; height: 100%;">
-
-    <% if category.catimage.url.present? %>
-    <%= image_tag category.catimage.url, class: "card-img-top" %>
-    <% end %>
-    <div class="card-body">
-      <h5 class="card-title text-center"> <%= link_to category.category , category %> </h5>
-
-    </div>
-  </div>
-
-    </div>
-<% end %>
-<div class="text-center col-12"> <%= link_to "Voir plus", categories_url, class: 'btn btn-success my-3' %> </div>
-
-</div>
 
 
-
-
-
-<div class="row faculty-section my-5">
-
-<h2 class="text-center col-12">  Publications récentes </h2>
-
-<%  @posts.each do |p| %>
-<div class="col-sm-12 col-md-4 text-center my-4 ">
-    <div class="card m-1" style="max-width: 18rem; height: 100%;">
-
-
-    <div class="card-body">
-      <h5 class="card-title text-center"> <%= link_to p.title , p %> </h5>
-      <%= p.category.category%> <br> <br>
-        <span>   <%= link_to "Voir", p, class: "btn btn-success"  %> </span>
-
-    </div>
-  </div>
-
-    </div>
-<% end %>
-</div>
-
-<div class="row my-5 faculty-section">
-  <div class="col-6  text-center">
-    <h2> <i class="fas fa-users"></i> <br>
-    Rejoins plus de <%= @user %> Étudiants.</h2>
-
-  </div>
-  <div class="col-6 text-center">
-  <h2>
-    <i class="fas fa-copy"></i> <br>
-    Et plus de <%= @post.count %> contributions.
-  </h2>
-
-  </div>
-</div>
-
-<div class="row m-auto my-5">
-  <div class=" text-center premium-section col-6 m-auto">
-    <h2 class="premium-text mt-5"> Bientôt l'options premium!</h2>
-  </div>
-</div>
-
-
-</div>
+          <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+          <script>
+            AOS.init({
+              duration: 2000
+            });
+          </script>
