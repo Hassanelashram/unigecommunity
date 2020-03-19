@@ -1,5 +1,9 @@
-<p>Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<div class="headbar">
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+    </div>
+    <h1>Bienvenue <%= @user.name %>,</h1>
+
+    <h2>Pour confirmer ton adresse email, clique sur le lien suivant:</h2> <br>
+    <%= link_to 'Confirmer', confirmation_url(@resource, confirmation_token: @token)  , class: 'confirm-link' %>
+  <div class="headbar"> www.unigecommunity.ch </div>

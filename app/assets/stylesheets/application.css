@@ -399,3 +399,23 @@ select{
   color: black;
   text-decoration:none;
 }
+
+
+
+
+/* Mail layout */
+.headbar{
+    background-color: rgb(32, 150, 32);
+    height: 50px;
+    width: 100%;
+margin: 50px 0px;
+color: white;
+}
+
+.confirm-link{
+    background-color: rgb(32, 150, 32);
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: 2rem;
+}

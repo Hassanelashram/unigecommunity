@@ -25,7 +25,12 @@
 
     <%= render "shared/navbar" %>
 
-
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+    
     <%= yield %>
 
     <%= render "shared/footer" %>
