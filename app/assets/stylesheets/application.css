@@ -419,3 +419,7 @@ color: white;
     padding: 10px;
     font-size: 2rem;
 }
+
+.search-bar {
+    font-size: 1.5rem !important;
+}
