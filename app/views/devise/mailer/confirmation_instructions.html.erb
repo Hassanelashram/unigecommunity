@@ -2,7 +2,7 @@
 <div class="headbar">
 
     </div>
-    <h1>Bienvenue <%= @user.name %>,</h1>
+    <h1>Bienvenue <%= @resource.name %>,</h1>
 
     <h2>Pour confirmer ton adresse email, clique sur le lien suivant:</h2> <br>
     <%= link_to 'Confirmer', confirmation_url(@resource, confirmation_token: @token)  , class: 'confirm-link' %>
