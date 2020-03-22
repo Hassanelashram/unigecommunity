@@ -52,8 +52,13 @@
                 success: function(data) {
                     console.log('data', data);
 
+                    var sub_data = [];
+                    data.forEach(element => {
+                        sub_data.push({id: element.id, text: element.category})
+                    });
+
                     $("#post_sub_category_id").empty().select2({
-                        data: data
+                        data: sub_data
                     });
 
                 }
