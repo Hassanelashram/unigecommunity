@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @user = User.count
+    @post = Post.new
     @q = Post.ransack(params[:q])
     @posts = @q.result.order("created_at DESC").limit(4)
     # @posts = Post.order("created_at DESC").limit(4)

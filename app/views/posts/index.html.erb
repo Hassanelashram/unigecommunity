@@ -1,5 +1,10 @@
 <% content_for :title, "Unigecommunity" %>
 
+<!-- Button trigger modal -->
+
+
+
+
 <div class="jumbotron jumbotron-fluid">
   <div class="jumbocontainer">
     <h2 class="display-4">Bienvenue à UnigeCommunity</h2>
@@ -19,9 +24,8 @@
       <div class="header-box1 text-center">
         <br> <br><br>
         <h3 class="boxtitle">AIDEZ MA COMMUNAUTÉ</h3>
-        <%= link_to new_post_path do %>
-          <button class="button"><span> CONTRIBUER </span></button>
-        <% end %>
+          <button type="button" data-toggle="modal" data-target="#exampleModal" class="button"><span> CONTRIBUER </span></button>
+        
       </div>
     </div>
     <div class="col-sm-12 col-lg-6">
@@ -72,7 +76,8 @@
               <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
             <% end %>
             <div class="post-body card-body">
-              <p class="card-text"><%= p.body.truncate(20) %> </p>
+              <p class="card-text"> <%= p.title %> </p>
+              <%= p.category.category %> 
             </div>
           </div>
           </div>
