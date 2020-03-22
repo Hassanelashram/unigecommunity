@@ -1,4 +1,3 @@
-
 <%= form_with(model: post, local: true) do |form| %>
 
 <div class="container">
@@ -21,8 +20,8 @@
 
         <%= form.text_field :title, placeholder: 'Titre', class: 'form-control' %>
         <%= form.text_area :body, placeholder: 'Description', class: 'form-control' %>
-        <%= form.select :category_id, Category.order('category ASC').where(parent_id: nil).map {|c| [c.category, c.id] }, {prompt: "Choisis une faculté:"} %><br><br>
-        <%= form.select :category_id, Category.order('category ASC').where.not(parent_id: nil).map {|c| [c.category, c.id] }, {prompt: "Choisis une matière:"} %><br><br>
+        <%= form.select :category_id, Category.order('category ASC').where(parent_id: nil).map {|c| [c.category, c.id] }, { prompt: "Choisis une faculté:"} %><br><br>
+        <%= form.select :sub_category_id, {}, { prompt: "Choisis une matière:"} %><br><br>
         <label for="">Télécharger une image:     <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %></label>
         <label for="">Télécharger un Document:     <%= form.file_field :document %></label>
         <label for="">Télécharger un autre:     <%= form.file_field :document_two %></label>
@@ -37,3 +36,28 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#post_sub_category_id").select2();
+        $('#post_category_id').select2().change(function() {
+            var category_id = $(this).val();
+            console.log('category_id', category_id);
+            $.ajax({
+                url: '/categories/' + category_id + '/sub_categories',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    category_id: category_id
+                },
+                success: function(data) {
+                    console.log('data', data);
+
+                    $("#post_sub_category_id").empty().select2({
+                        data: data
+                    });
+
+                }
+            });
+        }).trigger('change');
+    });
+</script>

@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :category
+  belongs_to :sub_category, class_name: 'Category', foreign_key: 'sub_category_id'
   belongs_to :user
   has_many :comments
   mount_uploader :picture, PictureUploader
@@ -7,6 +8,7 @@ class Post < ApplicationRecord
   mount_uploader :document_two, DocumentTwoUploader
   validates :user_id, presence: true
   validates :category, presence: true
+  validates :sub_category, presence: true
   validate :picture_size
   validates :title, presence: true
   validates :body, presence: true

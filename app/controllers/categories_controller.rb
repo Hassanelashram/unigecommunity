@@ -8,6 +8,20 @@ class CategoriesController < ApplicationController
     @categories = Category.all.order('category ASC')
   end
 
+  def sub_categories
+    parent_cat_id = params[:category_id]
+    @categories = Category.where.not(parent_id: parent_cat_id).select(:id, :category)
+    options = []
+    if @categories.present?
+      @categories.each do |cat|
+        options << { id: cat.id, text: cat.category}
+      end
+    end
+    respond_to do |format|
+      format.json { render json: options }
+    end
+  end
+
   # GET /categories/1
   # GET /categories/1.json
   def show
