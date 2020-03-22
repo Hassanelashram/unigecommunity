@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all.order('category ASC')
+    @categories = Category.where(parent_id: nil).order('category ASC')
   end
 
   def sub_categories
