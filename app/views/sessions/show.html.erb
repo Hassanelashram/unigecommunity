@@ -34,7 +34,6 @@
   <tr>
     <thead>
     <th scope="col">Titre</th>
-    <th scope="col">Faculté</th>
     <th scope="col"></th>
   </tr>
   </thead>
@@ -43,7 +42,6 @@
     <% current_user.posts.each do |p| %>
     <tbody>
     <td><%= p.title %></td>
-    <td><%= p.category.category %></td>
     <td><%= link_to "Voir", p, class: "btn btn-success" %></td>
     <td><%= link_to "Modifier", edit_post_path(p), class: "btn btn-primary" %></td>
     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
