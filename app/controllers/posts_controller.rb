@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def index
     @user = User.count
     @q = Post.ransack(params[:q])
+    @postcount = Post.all.count
     @posts = @q.result.order("created_at DESC").limit(4)
     # @posts = Post.order("created_at DESC").limit(4)
     @category = Category.where(parent_id: nil).limit(4)
