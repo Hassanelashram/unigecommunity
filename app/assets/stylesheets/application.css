@@ -427,3 +427,7 @@ color: white;
 .modal-body .modal-content, .modal{
   min-width: 700px;
 }
+
+.post-count{
+  text-decoration: underline;
+}

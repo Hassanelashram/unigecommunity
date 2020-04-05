@@ -24,8 +24,9 @@
       <div class="header-box1 text-center">
         <br> <br><br>
         <h3 class="boxtitle">AIDEZ MA COMMUNAUTÉ</h3>
+        <%= link_to new_post_path do %>
           <button type="button" data-toggle="modal" data-target="#exampleModal" class="button"><span> CONTRIBUER </span></button>
-        
+        <% end %>
       </div>
     </div>
     <div class="col-sm-12 col-lg-6">
@@ -85,7 +86,7 @@
     <% end %>
     <br>
     <div class="col-12">
-      <%= link_to 'VOIR PLUS', categories_path, class: 'mybtn button' %>
+      <%= link_to 'VOIR PLUS', categories_path, class: 'mybtn button' %> <em class="post-count"> plus de <%= @posts.count %> contributions </em>
     </div>
 
     <!-- Artists of the week end -->
