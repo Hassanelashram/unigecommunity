@@ -61,5 +61,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.delivery_method = :smtp
+  Devise.setup do |config|
+    # The default HTTP method used to sign out a resource. Default is :delete.
+    config.sign_out_via = :get
+  end
 config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 end

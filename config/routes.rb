@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :categories do
     get :sub_categories
   end
-  devise_for :users
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   root 'posts#index'
   resources :posts
   get "/profile", to: "sessions#show", as: "profile"

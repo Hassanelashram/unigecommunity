@@ -2,14 +2,13 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-
-
 <div class="container">
   <div class="row">
 
     <div class="col-md-6 my-5 edit-box text-center mx-auto">
       <h2>Modifier son profile</h2>
       <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+      <%= f.select :category_id, Category.order('category ASC').where(parent_id: nil).map {|c| [c.category, c.id] }, { prompt: "Choisis une faculté:"} %>
       <%= f.email_field :email, autofocus: true, class: 'mb-3 form-control'  %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

@@ -1,6 +1,44 @@
 <% content_for :title, "#{current_user.name} | Mon profile" %>
 
+<div class="jumbotronprofile jumbotron jumbotron-fluid">
+<div class="profilepicturecontainer">
+<% if current_user.avatar.present? %>
+      <%= image_tag current_user.avatar.url, class: 'avatar m-2' %>
+      <% end %>
+</div>
 
+
+<h3 class="profilenamecontainer profilename"> <%= current_user.name %> <%= link_to destroy_user_session_path,  method: 'delete' do %> <i class="fas fa-sign-out-alt"></i> <% end %>  <br>
+  <span class='profilecategory'> <%= current_user.category.category %>
+  <%= link_to edit_user_registration_path do %> <i class="fas fa-user-edit "></i> <% end %> </span> <br>
+  </h3>
+  </div>
+
+<br>
+<br>
+<br>
+
+<div class="container my-5">
+  <div class="row text-center">
+    <div class="col-6 mr-2  profilebox">
+      <h4 class='boxtitle'>Badges:</h4>
+      <h4>Disponible prochainement</h4>
+    </div>
+    <div class="col ml-2 profilebox">
+      <h4 class='boxtitle'>Info:</h4>
+      <hr>
+      <h6><%= current_user.email %></h6>
+      <hr>
+      <h6><%= current_user.posts.count %> Contributions</h6>
+      <hr>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
 
 <div class="container">
   <div class="row">
@@ -15,7 +53,7 @@
       <hr>
        <h6> <i class="fas fa-plus-circle"></i> <%= link_to "Publier", new_post_path, class: "profile-buttons"  %> </h6>
       <hr>
-       <h6> <i class="fas fa-sign-out-alt"></i> <%= link_to "Se Déconnecter", destroy_user_session_path,  method: 'delete', class: "profile-buttons" %></h6>
+       <h6> <i class="fas fa-sign-out-alt"></i> <%= link_to "Se Déconnecter", destroy_user_session_path,  method: :delete, class: "profile-buttons" %></h6>
       <hr>
       <h6> <%= link_to "Create Category", new_category_path if current_user.admin? %> </h6>
 

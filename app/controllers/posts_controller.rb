@@ -21,6 +21,20 @@ class PostsController < ApplicationController
     @user = User.name
   end
 
+  def sub_categories
+    parent_cat_id = params[:category_id].to_i
+    @categories = Category.where(parent_id: parent_cat_id).select(:id, :category)
+    # options = []
+    # if @categories.present?
+    #   @categories.each do |cat|
+    #     options << { id: cat.id, text: cat.category}
+    #   end
+    # end
+    respond_to do |format|
+      format.json { render json: @categories }
+    end
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
