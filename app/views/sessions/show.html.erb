@@ -1,18 +1,26 @@
 <% content_for :title, "#{current_user.name} | Mon profile" %>
 
-<div class="jumbotronprofile jumbotron jumbotron-fluid">
-<div class="profilepicturecontainer">
-<% if current_user.avatar.present? %>
-      <%= image_tag current_user.avatar.url, class: 'avatar m-2' %>
-      <% end %>
-</div>
+<div class=" jumbotronprofile jumbotron  jumbotron-fluid">
 
-
-<h3 class="profilenamecontainer profilename"> <%= current_user.name %> <%= link_to destroy_user_session_path,  method: 'delete' do %> <i class="fas fa-sign-out-alt"></i> <% end %>  <br>
-  <span class='profilecategory'> <%= current_user.category.category %>
-  <%= link_to edit_user_registration_path do %> <i class="fas fa-user-edit "></i> <% end %> </span> <br>
-  </h3>
+<div class="row text-center profilecontainer">
+  <div class="col-3">
+    <div class="profilepicturecontainer">
+    <% if current_user.avatar.present? %>
+          <%= image_tag current_user.avatar.url, class: 'avatar m-2' %>
+          <% end %>
+    </div>
   </div>
+
+        <div class="col-9 ">
+          <div class="text-left profilename">
+            <%= current_user.name %> <%= link_to destroy_user_session_path,  method: 'delete' do %> <i class="fas fa-sign-out-alt"></i> <% end %>  <br>
+              <span class='profilecategory'> <%= current_user.category.category %>
+              <%= link_to edit_user_registration_path do %> <i class="fas fa-user-edit "></i> <% end %> </span> <br>
+          </div>
+        </div>
+
+</div>
+</div>
 
 <br>
 <br>
@@ -20,11 +28,11 @@
 
 <div class="container my-5">
   <div class="row text-center">
-    <div class="col-6 mr-2  profilebox">
+    <div class="col-sm-12 col-lg m-2  profilebox">
       <h4 class='boxtitle'>Badges:</h4>
       <h4>Disponible prochainement</h4>
     </div>
-    <div class="col ml-2 profilebox">
+    <div class="col-sm-12 col-lg mx-2 profilebox">
       <h4 class='boxtitle'>Info:</h4>
       <hr>
       <h6><%= current_user.email %></h6>
@@ -35,59 +43,39 @@
   </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
+
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3 profile-wrapper text-center">
-      <% if current_user.avatar.present? %>
-      <%= image_tag current_user.avatar.url, class: 'avatar m-2' %>
-      <% end %>
-      <h3> <%= current_user.name %> </h3>
-
-      <hr>
-       <h6> <i class="fas fa-user-edit"></i> <%= link_to "Modifier Profile", edit_user_registration_path, class: "profile-buttons" %> </h6>
-      <hr>
-       <h6> <i class="fas fa-plus-circle"></i> <%= link_to "Publier", new_post_path, class: "profile-buttons"  %> </h6>
-      <hr>
-       <h6> <i class="fas fa-sign-out-alt"></i> <%= link_to "Se Déconnecter", destroy_user_session_path,  method: :delete, class: "profile-buttons" %></h6>
-      <hr>
-      <h6> <%= link_to "Create Category", new_category_path if current_user.admin? %> </h6>
-
+    <div class="col-12">
+      <h1 class='title'>Contributions:</h1>
     </div>
-
-    <!-- Button trigger modal -->
-
-
-    <!-- Modal -->
-
-
-
-<div class="col posts-wrapper">
-  <h2>Mes publications</h2>
-<table class="table">
-  <tr>
-    <thead>
-    <th scope="col">Titre</th>
-    <th scope="col"></th>
-  </tr>
-  </thead>
-
-
     <% current_user.posts.each do |p| %>
-    <tbody>
-    <td><%= p.title %></td>
-    <td><%= link_to "Voir", p, class: "btn btn-success" %></td>
-    <td><%= link_to "Modifier", edit_post_path(p), class: "btn btn-primary" %></td>
-    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-      Supprimer
-    </button></td>
-    </tbody>
+      <div class="col-sm-12  col-lg  my-4">
+          <div  class="collection-box mx-auto card" style="width: 15rem">
+            <!-- Checking if post picture is present, if not putting a default one.  -->
+            <% if p.picture.present? %>
+              <%= image_tag p.picture.url, class: " card-img-top" %>
+            <% else %>
+              <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
+            <% end %>
 
+            <div class="post-body-profile card-body">
+              <p class="card-text"> <%= p.title %> </p>
+              <%= p.sub_category.category %>
+              <div class="postbuttons">
+                <tbody>
+                <td><%= link_to "Modifier", edit_post_path(p), class: "btn btn-primary" %></td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                  Supprimer
+                </button></td>
+                </tbody>
+              </div>
+            </div>
+          </div>
+      </div>
 
+    <% end %>
 
 
 
@@ -109,12 +97,6 @@
         </div>
       </div>
     </div>
-    <% end %>
 
-
-</table>
     </div>
   </div>
-
-
-</div>

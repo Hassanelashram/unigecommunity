@@ -1,11 +1,11 @@
 <% content_for :title, "Unigecommunity" %>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="jumbocontainer">
+        <h2 class="display-4">Bienvenue à UnigeCommunity</h2>
+        <p class="lead"> Une manière plus simple d'étudier.</p>
+      </div>
+    </div>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="jumbocontainer">
-    <h2 class="display-4">Bienvenue à UnigeCommunity</h2>
-    <p class="lead"> Une manière plus simple d'étudier.</p>
-  </div>
-</div>
 
 
 <div class="container">
@@ -34,11 +34,15 @@
       </div>
     </div>
   </div>
-
   <!-- First options section end -->
 
-  <!-- Artists of the week -->
+
+
+
+  <!-- Row for posts of the week -->
   <div data-aos="fade-left" class="row">
+
+    <!-- Search bar section on index and the button. -->
     <div class="col-12">
       <%= search_form_for @q do |f| %>
         <div class="row">
@@ -50,9 +54,14 @@
           </div>
         </div>
       <% end %>
+      <!-- Search bar section and button end. -->
+
+
       <h2 class="title">
         Découvre les contributions de la <span class="span1"> Semaine </span>
       </h2>
+
+
       <% if @posts.blank? %>
         <div class="col-sm-6 col-lg my-4">
           <h4 class="subtitle">Aucun post récent à afficher</h4>
@@ -61,30 +70,40 @@
         <h4 class="subtitle">Les plus récentes</h4>
       <% end %>
     </div>
-    <% @posts.each do |p| %>
 
-      <div class="col-sm-6 col-lg my-4">
+    <!-- Displaying the most recent posts. Only 4  -->
+    <% @posts.each do |p| %>
+      <div class="col-sm-12  col-lg  my-4">
         <%= link_to p do %>
-          <div onmouseover="showProfile()" onmouseout="hideProfile()" class="collection-box card" style="width: 15rem">
+          <div  class="collection-box mx-auto card" style="width: 15rem">
+            <!-- Checking if post picture is present, if not putting a default one.  -->
             <% if p.picture.present? %>
               <%= image_tag p.picture.url, class: " card-img-top" %>
             <% else %>
               <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
             <% end %>
+
             <div class="post-body card-body">
               <p class="card-text"> <%= p.title %> </p>
               <%= p.sub_category.category %>
             </div>
           </div>
-          </div>
+      </div>
         <% end %>
     <% end %>
+    <!-- Displaying the posts end -->
+
     <br>
+    <!-- View more button below posts section -->
     <div class="col-12">
       <%= link_to 'VOIR PLUS', categories_path, class: 'mybtn button' %> <em class="post-count"> plus de <%= @postcount %> contributions </em>
     </div>
+</div>
+
 
     <!-- Artists of the week end -->
+
+
 
     <!-- Collections section -->
     <div data-aos="fade-right" class="row my-5 ">
@@ -99,14 +118,13 @@
 
       <% @category.each do |category| %>
         <div class="text-center mt-4 col-sm-6 col-lg">
-          <div class="collection-box card" style="width: 15rem">
+          <div class="collection-box mx-auto card" style="width: 15rem">
             <% if category.catimage.url.present? %>
               <%= image_tag category.catimage.url, class: "card-img-top" %>
             <% end %>
             <div class="collection-body card-body">
               <h5 class="collection-title"><%= link_to category.category, category %></h5>
               <p class="card-text"><%= category.posts.count %> contributions</p>
-
             </div>
           </div>
         </div>
@@ -114,7 +132,8 @@
     </div>
     <!-- Collections end -->
 
-  </div>
+
+</div>
 
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -123,4 +142,3 @@
           duration: 2000
       });
   </script>
-</div>

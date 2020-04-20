@@ -10,13 +10,13 @@
 
     <% if @category.parent_id.nil? %>
       <% @category.children.each do |category| %>
-        <div class="col-3 my-3">
-          <div class="card m-1" style="max-width: 20rem; height: 100%;">
+        <div class="col-sm-10 col-lg-3 my-3">
+          <div class="card m-1 mx-auto" style="max-width: 20rem; height: 100%;">
 
             <div class="card-body">
               <h5 class="card-title">  <%= category.category %>  </h5> <br>
 
-              <span>   <%= link_to "View", category, class: "btn btn-primary" %> </span>
+              <span>   <%= link_to "Voir", category, class: "btn btn-primary" %> </span>
             </div>
           </div>
 
@@ -25,8 +25,8 @@
 
     <% else %>
       <% @category.sub_category_posts.each do |p| %>
-        <div class="col-3 my-3">
-          <div class="card m-1" style="max-width: 20rem; height: 100%;">
+        <div class="col-sm-10 col-lg-3 my-3">
+          <div class="card mx-auto m-1" style="max-width: 20rem; height: 100%;">
 
             <div class="card-body">
               <h5 class="card-title">  <%= p.title %>  </h5> <br>

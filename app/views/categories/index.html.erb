@@ -25,8 +25,8 @@
 
 
 <% @categories.each do |category| %>
-  <div class="text-center mt-4 col-sm-6 col-lg">
-    <div class="collection-box card" style="width: 15rem">
+  <div class="text-center mt-4 col-sm-10 col-lg">
+    <div class="collection-box card mx-auto" style="width: 15rem">
       <% if category.catimage.url.present? %>
         <%= image_tag category.catimage.url, class: "card-img-top" %>
       <% end %>
