@@ -17,24 +17,64 @@
         <% else %>
         <%= image_tag 'https://images.unsplash.com/photo-1514369118554-e20d93546b30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', class: 'image-show m-2' %>
         <% end %>
-    </div>
 
-    <div class="col-sm-12 col-lg-3 m-2 post-details ">
+          <hr>
 
-      <h2> <%=  @post.title %> </h2>
-      <hr>
-      <p> <%=  @post.category.category %> </p>
-      <hr>
-      <p> <%= @post.body %> </p>
-      <hr>
-      <p> Documents: <br>
+          <div class="row">
+            <div class="col-4">
+      <h2 class="post-title"><strong>Titre:</strong> <%= @post.title %>   </h2>
+            </div>
+            <div class="col-4">
 
-      <% if @post.document.present? %>
-     <i class="far fa-file"></i>  <%= link_to @post.document_identifier, @post.document.url %>
-     <% end %> <br>
-     <% if @post.document_two.present? %>
-     <i class="far fa-file"></i> <%= link_to @post.document_two_identifier, @post.document_two.url %> </p>
-     <% end %>
+              <% if @post.weighted_score < 0 %>
+              <strong class='points'>
+              <i class="fas fa-heart-broken"></i> Points: <%= @post.weighted_score %>
+              </strong>
+              <% else %>
+              <strong class="points">
+                <i class="fas fa-heart"></i> Points: <%= @post.weighted_score %>
+              </strong>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= button_to  like_post_path(@post), class: 'pointsbutton', method: :put do %>
+                <h2><i class="fas fa-arrow-up"></i></h2>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= button_to  unlike_post_path(@post), class: 'pointsbutton', method: :put do %>
+                <h2><i class="fas fa-arrow-down"></i></h2>
+              <% end %>
+            </div>
+          </div>
+<hr>
+          <div class="row">
+            <div class="col-12">
+              <h4 class=''><strong>Description</strong> <%= @post.body %></h4>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col">
+              <h4 class=''><strong>Faculté: </strong> <%= @post.category.category %></h4>
+            </div>
+            <div class="col">
+              <h4><strong>Matière:</strong> <%= @post.sub_category.category %></h4>
+            </div>
+          </div>
+<hr>
+<div class="row">
+  <div class="col-12">
+  <h4><strong>Documents:</strong></h4>
+  <% if @post.document.present? %>
+  <i class="far fa-file"></i>  <%= link_to @post.document_identifier, @post.document.url %>
+  <% end %> <br>
+  <% if @post.document_two.present? %>
+  <i class="far fa-file"></i> <%= link_to @post.document_two_identifier, @post.document_two.url %>
+  <% end %>
+  </div>
+</div>
 
     </div>
 
@@ -48,6 +88,7 @@
       <p> <i class="far fa-envelope"></i> <%=  @post.user.email %> </p>
       <hr>
       <p>Contributions: <%= @post.user.posts.count %> </p>
+
       <hr>
       <em>Publier il y a <%= time_ago_in_words(@post.created_at) %></em>
     </div>

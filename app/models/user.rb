@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_voter
   has_many :posts
   belongs_to :category
   mount_uploader :avatar, AvatarUploader

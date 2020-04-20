@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_votable
   belongs_to :category
   belongs_to :sub_category, class_name: 'Category', foreign_key: 'sub_category_id'
   belongs_to :user

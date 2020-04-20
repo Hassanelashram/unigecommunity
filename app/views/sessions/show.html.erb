@@ -1,24 +1,19 @@
 <% content_for :title, "#{current_user.name} | Mon profile" %>
 
 <div class=" jumbotronprofile jumbotron  jumbotron-fluid">
-
-<div class="row text-center profilecontainer">
-  <div class="col-3">
-    <div class="profilepicturecontainer">
+<div class="row text-center">
+  <div class="col-12">
     <% if current_user.avatar.present? %>
-          <%= image_tag current_user.avatar.url, class: 'avatar m-2' %>
-          <% end %>
-    </div>
+    <%= image_tag current_user.avatar.url, class: 'avatar mx-auto' %>
+    <% end %>
   </div>
-
-        <div class="col-9 ">
-          <div class="text-left profilename">
-            <%= current_user.name %> <%= link_to destroy_user_session_path,  method: 'delete' do %> <i class="fas fa-sign-out-alt"></i> <% end %>  <br>
-              <span class='profilecategory'> <%= current_user.category.category %>
-              <%= link_to edit_user_registration_path do %> <i class="fas fa-user-edit "></i> <% end %> </span> <br>
-          </div>
-        </div>
-
+  <div class="col-12">
+    <h4 class='profilename mx-auto'>
+      <%= current_user.name %> <%= link_to destroy_user_session_path,  method: 'delete' do %> <i class="fas fa-sign-out-alt"></i> <% end %>  <br>
+      <span class='profilecategory'> <%= current_user.category.category %>
+      <%= link_to edit_user_registration_path do %> <i class="fas fa-user-edit "></i> <% end %> </span> <br>
+    </h4>
+  </div>
 </div>
 </div>
 
@@ -32,7 +27,7 @@
       <h4 class='boxtitle'>Badges:</h4>
       <h4>Disponible prochainement</h4>
     </div>
-    <div class="col-sm-12 col-lg mx-2 profilebox">
+    <div class="col-sm-12 col-lg m-2 profilebox">
       <h4 class='boxtitle'>Info:</h4>
       <hr>
       <h6><%= current_user.email %></h6>

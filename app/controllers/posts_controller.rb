@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :downvote, :upvote]
   before_action :authenticate_user!, only: [:edit,:show, :update, :destroy, :create, :new]
 
 
@@ -9,10 +9,11 @@ class PostsController < ApplicationController
     @user = User.count
     @q = Post.ransack(params[:q])
     @postcount = Post.all.count
-    @posts = @q.result.order("created_at DESC").limit(4)
+    @posts = @q.result.order(:cached_votes_score => :desc).limit(12)
     # @posts = Post.order("created_at DESC").limit(4)
     @category = Category.where(parent_id: nil).limit(4)
     @category = @category.order("created_at DESC")
+    @popular = Post.all.order(:cached_votes_score => :desc)
   end
 
   # GET /posts/1
@@ -83,6 +84,16 @@ class PostsController < ApplicationController
       format.html { redirect_to profile_url, success: 'Votre contributions a été supprimer.' }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @post.upvote_from current_user
+    redirect_to @post
+  end
+
+  def downvote
+    @post.downvote_from current_user
+    redirect_to @post
   end
 
   private
