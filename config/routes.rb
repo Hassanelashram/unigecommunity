@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+
   resources :categories do
     get :sub_categories
   end
+
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  root 'posts#index'
+
+  resources :users
+
   resources :posts do
     member do
       put 'like' => 'posts#upvote'
