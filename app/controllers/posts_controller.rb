@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:edit,:show, :update, :destroy, :create, :new]
 
 
+
   # GET /posts
   # GET /posts.json
   def index
@@ -20,6 +21,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @user = User.name
+    @profile = @post.user
   end
 
   def sub_categories
@@ -43,6 +45,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    if current_user.id != @post.user_id
+      redirect_to root_url
+    end 
   end
 
   # POST /posts
@@ -101,6 +106,7 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  get "/users/:id", to: "users#show", as: "userprofile"
 
   resources :posts do
     member do

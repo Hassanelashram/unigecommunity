@@ -1,13 +1,6 @@
 <% content_for :title, "#{@post.title} | Unigecommunity" %>
 
 
-    <% flash.each do |message_type, message| %>
-     <div class="my-5 alert alert-<%= message_type %>">
-       <%= message %>
-     </div>
-    <% end %>
-
-
 
 <div class="container">
   <div class="row my-4">
@@ -83,7 +76,7 @@
       <% if @post.user.avatar.present? %>
         <%= image_tag @post.user.avatar.url, class: 'avatar m-2' %>
       <% end %>
-      <h2> <%=  @post.user.name %> </h2>
+      <h2>  <%= link_to @post.user.name, userprofile_path(@profile) %> </h2>
       <hr>
       <p> <i class="far fa-envelope"></i> <%=  @post.user.email %> </p>
       <hr>

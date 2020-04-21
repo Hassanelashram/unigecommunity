@@ -1,1 +1,87 @@
-<%= @user.email %>
+<% content_for :title, "#{current_user.name}" %>
+<div class=" jumbotronprofile jumbotron  jumbotron-fluid">
+<div class="row text-center">
+  <div class="col-12">
+    <% if @user.avatar.present? %>
+    <%= image_tag @user.avatar.url, class: 'avatar mx-auto' %>
+    <% end %>
+  </div>
+  <div class="col-12">
+    <h4 class='profilename mx-auto'>
+      <%= @user.name %>  <br>
+      <span class='profilecategory'> <%= @user.category.category %><br>
+    </h4>
+  </div>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container my-5">
+  <div class="row text-center">
+    <div class="col-sm-12 col-lg m-2  profilebox">
+      <h4 class='boxtitle'>Badges:</h4>
+      <h4>Disponible prochainement</h4>
+    </div>
+    <div class="col-sm-12 col-lg m-2 profilebox">
+      <h4 class='boxtitle'>Info:</h4>
+      <hr>
+      <h6><%= @user.email %></h6>
+      <hr>
+      <h6><%= @user.posts.count %> Contributions</h6>
+      <hr>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class='title'>Contributions:</h1>
+    </div>
+    <% @user.posts.each do |p| %>
+      <div class="col-sm-12  col-lg  my-4">
+          <div  class="collection-box mx-auto card" style="width: 15rem">
+            <!-- Checking if post picture is present, if not putting a default one.  -->
+            <% if p.picture.present? %>
+              <%= image_tag p.picture.url, class: " card-img-top" %>
+            <% else %>
+              <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
+            <% end %>
+
+            <div class="post-body-profile card-body">
+              <p class="card-text"> <%= p.title %> </p>
+              <%= p.sub_category.category %>
+            </div>
+          </div>
+      </div>
+
+    <% end %>
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Vous êtes sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Vous ne pourrez plus le récuperez.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger"><%= link_to "Supprimer", p, method: :delete, class: "btn btn-danger" %></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
