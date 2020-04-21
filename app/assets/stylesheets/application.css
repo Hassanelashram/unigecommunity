@@ -506,7 +506,7 @@ color: white;
 
 
 .modal-body .modal-content, .modal{
-  min-width: 700px;
+  width: 80vw;
 }
 
 .post-count{
