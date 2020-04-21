@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @q = Post.ransack(params[:q])
   end
 
   # GET /categories/new

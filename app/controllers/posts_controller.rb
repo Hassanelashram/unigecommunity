@@ -6,6 +6,17 @@ class PostsController < ApplicationController
 
   # GET /posts
   # GET /posts.json
+  def homepage
+    @user = User.count
+    @postcount = Post.all.count
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.order(:cached_votes_score => :desc).limit(12)
+    #@posts = Post.order("created_at DESC").limit(12)
+    @category = Category.where(parent_id: nil).limit(4)
+    @category = @category.order("created_at DESC")
+    @popular = Post.all.order(:cached_votes_score => :desc)
+  end
+
   def index
     @user = User.count
     @q = Post.ransack(params[:q])
@@ -47,7 +58,7 @@ class PostsController < ApplicationController
   def edit
     if current_user.id != @post.user_id
       redirect_to root_url
-    end 
+    end
   end
 
   # POST /posts

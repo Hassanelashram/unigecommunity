@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'posts#index'
+  get '/homepage', to: 'posts#homepage'
+  root 'posts#homepage'
+
 
   resources :categories do
     get :sub_categories

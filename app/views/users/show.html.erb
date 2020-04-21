@@ -23,17 +23,20 @@
   <div class="row text-center">
     <div class="col-sm-12 col-lg m-2  profilebox">
       <h4 class='boxtitle'>Badges:</h4>
-      <% if @user.posts.count == 1 %>
-      <%= image_tag 'https://image.flaticon.com/icons/svg/2826/2826429.svg' %>
+      <% if @user.posts.count <= 1 %>
+      <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= "Pour avoir rejoins UnigeCommunity">
+        <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/2826/2826429.svg"   alt="">
+        <h5>Nouvel arrivant <i class="fas fa-info-circle"></i></h5>
+        </div>
       <% elsif @user.posts.count < 10 %>
-      <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= " Tu as publiés + d'une fois">
+      <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= "Pour avoir contribuer 2 fois ou plus" ">
       <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/2828/2828290.svg"   alt="">
       <h5>Contributeur intermédiaire <i class="fas fa-info-circle"></i></h5>
       </div>
 
       <% elsif @user.posts.count >= 10 %>
-      <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= " Tu as publiés + de 10 fois">
-      <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/2828/2828290.svg"   alt="">
+      <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= "Pour avoir contribuer 10 fois ou plus">
+      <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/1144/1144441.svg"   alt="">
       <h5>Contributeur expert <i class="fas fa-info-circle"></i></h5>
       </div>
       <% end %>
@@ -57,21 +60,25 @@
       <h1 class='title'>Contributions:</h1>
     </div>
     <% @user.posts.each do |p| %>
-      <div class="col-sm-12  col-lg  my-4">
-          <div  class="collection-box mx-auto card" style="width: 15rem">
-            <!-- Checking if post picture is present, if not putting a default one.  -->
-            <% if p.picture.present? %>
-              <%= image_tag p.picture.url, class: " card-img-top" %>
-            <% else %>
-              <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
-            <% end %>
-
-            <div class="post-body-profile card-body">
-              <p class="card-text"> <%= p.title %> </p>
-              <%= p.sub_category.category %>
-            </div>
+    <div class="col-sm-12  col-lg  my-4">
+      <%= link_to p do %>
+        <div  class="collection-box mx-auto card" style="width: 15rem">
+          <!-- Checking if post picture is present, if not putting a default one.  -->
+          <% if p.picture.present? %>
+            <%= image_tag p.picture.url, class: " card-img-top" %>
+          <% else %>
+            <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
+          <% end %>
+          <div class="points-thumb">
+          <i class="fas fa-heart"></i> <%=  p.weighted_score%>
           </div>
-      </div>
+          <div class="post-body card-body">
+            <p class="card-text"> <%= p.title %> </p>
+            <%= p.sub_category.category %>
+          </div>
+        </div>
+    </div>
+      <% end %>
 
     <% end %>
 
