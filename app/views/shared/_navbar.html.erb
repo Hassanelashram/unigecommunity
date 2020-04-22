@@ -7,18 +7,16 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          
+
 
         </ul>
         <ul class="navbar-nav mr-5">
           <form class="form-inline my-2 my-lg-0">
-            <% if !user_signed_in? %>
-            <%= link_to "Publier", new_user_session_path, class: "btn btn-success ml-3" %>
-            <% end %>
 
 
             <%- if user_signed_in? %>
             <%= link_to "Publier", new_post_path, class: "ml-3 btn mybtn "  %>
+            <%= link_to "Forum", topics_path, class: "ml-3 btn mybtn "  %>
             <%= link_to "Profile", profile_path, class: "ml-3 btn mybtn"  %>
 
             <% else %>
