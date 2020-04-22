@@ -7,7 +7,7 @@
       <%= search_form_for @q do |f| %>
         <div class="row  mx-auto">
           <div class="col-lg-10">
-            <%= f.search_field :title_or_sub_category_category_or_cont, class: 'form-control search-bar', placeholder: 'Cherchez une contributions (Titre, faculté ou matière)' %>
+            <%= f.search_field :title_or_sub_category_category_cont, class: 'form-control search-bar', placeholder: 'Cherchez une contributions (Titre, faculté ou matière)' %>
           </div>
           <div class="col-lg">
             <%= f.submit 'Search', class: 'button' %>
