@@ -1,0 +1,7 @@
+<%= form_for([@topic, @topic.opinions.build]) do |f| %>
+
+<label for="">Discuter en tant que:</label> <strong><%= current_user.name if user_signed_in?%></strong>
+  <%= f.text_area :body, class: 'form-control', placeholder: 'Commentaire' %>
+  <%= f.submit 'Publier', class: 'form-control btn btn-success' %>
+
+<% end %>

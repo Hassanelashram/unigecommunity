@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :topics do
+    resources :opinions
+  end
   get '/homepage', to: 'posts#homepage'
   root 'posts#homepage'
 

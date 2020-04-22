@@ -7,7 +7,7 @@
       <%= search_form_for @q do |f| %>
         <div class="row  mx-auto">
           <div class="col-lg-10">
-            <%= f.search_field :title_or_sub_category_category_cont, class: 'form-control search-bar', placeholder: 'Cherchez une contributions (Titre, faculté ou matière)' %>
+            <%= f.search_field :title_or_sub_category_category_or_cont, class: 'form-control search-bar', placeholder: 'Cherchez une contributions (Titre, faculté ou matière)' %>
           </div>
           <div class="col-lg">
             <%= f.submit 'Search', class: 'button' %>
@@ -83,7 +83,7 @@
               <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
             <% end %>
             <div class="points-thumb" >
-            <i class="fas fa-heart" ></i> <%=  p.weighted_score %> 
+            <i class="fas fa-heart" ></i> <%=  p.weighted_score %>
             </div>
             <div class="post-body card-body">
               <p class="card-text" > <%= p.title %> </p>

@@ -524,3 +524,9 @@ color: white;
   font-size: 2rem;
   color: black;
 }
+
+.avatarforum{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}

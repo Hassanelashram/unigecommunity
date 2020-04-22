@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   acts_as_voter
   has_many :posts
+  has_many :topics
   has_many :comments
   belongs_to :category
   mount_uploader :avatar, AvatarUploader
