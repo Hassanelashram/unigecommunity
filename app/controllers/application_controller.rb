@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
-
+def confirm_admin
+  if current_user.admin != true
+    redirect_to root_url
+  end
+end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar, :category_id])

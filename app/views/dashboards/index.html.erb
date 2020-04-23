@@ -1,0 +1,136 @@
+
+
+<div class="container my-4">
+  <div class="accordion" id="accordionExample">
+    <div class="row">
+      <div class="col-12 my-2">
+        <div class="card profilebox">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h2> <%= @posts.count %> Posts</h2>
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <% @posts.each do |u| %>
+
+                <h4> <%= u.title %>
+                  <%= link_to posts_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                    <% end %>
+
+                </h4>
+        <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card profilebox">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <h2> <%= @users.count %> Users</h2>
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+              <% @users.each do |u| %>
+
+                <h4> <%= u.name %> (number: <%= u.id%>)
+                  <%= link_to posts_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                    <% end %>
+
+                </h4>
+        <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card profilebox">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <h2> <%= @topics.count %> Forum topics</h2>
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              <% @topics.each do |u| %>
+
+                <h4> <%= u.title %>
+                  <%= link_to topics_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                    <% end %>
+
+                </h4>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col">
+        <div class="card profilebox">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <h2> <%= @categories.count %> Categories</h2>
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <% @categories.each do |u| %>
+
+                <h4> <%= u.category %>
+                  <%= link_to categories_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                    <% end %>
+                </h4>
+                <hr>
+                <% end %>
+                <%= link_to 'Create new', new_category_path, class: 'btn btn-success' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card profilebox">
+          <div class="card-header" id="headingFive">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                <h2> <%= @opinions.count %> Opinions</h2>
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body">
+              <% @opinions.each do |u| %>
+
+                <h4> <%= u.body %> <strong>by user number <%= u.user_id %></strong>
+                  <%= link_to [u.topic, u], data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                  <hr>
+                    <% end %>
+
+                </h4>
+        <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

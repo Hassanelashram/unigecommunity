@@ -18,7 +18,8 @@
                 </h4>
                 <%= mail_to current_user.email, subject: 'Unigecommunity', body: "Your content #{request.original_url}" do %>
                   <i class="fas fa-envelope"> Envoyer un Email</i>
-                  <% end %>
+                  <% end %> <br>
+                  <%= link_to 'dashboard', dashboards_path, class: ' my-2 btn btn-success' if current_user.admin? %>
               </div>
               <div class="col-sm-12 col-lg-12 m-2  profilebox">
                 <h4 class='boxtitle'>Badges:
