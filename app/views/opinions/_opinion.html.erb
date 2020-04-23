@@ -1,16 +1,18 @@
-<div class="profilebox my-2">
+<div class="opinionbox my-2">
   <div class="row">
     <div class="col-3 text-left">
         <%= image_tag opinion.user.avatar.url, class: 'avatarforum' if present? %>
     </div>
-    <div class="col-5">
-      <h4> <%= opinion.user.name %>: </h4>
+    <div class="col text-left">
+      <h5> <%= opinion.user.name %>: </h5>
       <h6> <%= opinion.body %></h6>
     </div>
-    <div class="col text-right">
+    <div class="col-12 text-center">
+      <hr>
+      <em>Publier il y a </em><%= time_ago_in_words(opinion.created_at) %>
       <% if current_user.id == opinion.user.id %>
       <%= link_to [opinion.topic, opinion], method: :delete do %>
-      <i style='color: red' class="fas fa-trash-alt"></i>
+      <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
       <% end %>
       <% end %>
     </div>

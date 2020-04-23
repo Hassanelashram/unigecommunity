@@ -4,12 +4,14 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.all.order('created_at DESC')
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topics = Topic.all.order('created_at DESC').limit(4)
+    @moretopics = Topic.all
   end
 
   # GET /topics/new

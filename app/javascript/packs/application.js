@@ -24,4 +24,6 @@ $(document).ready(function(){
 setInterval(function(){
       $("#opsfo").load(window.location.href + " #opsfo > *" );
 }, 3000);
+
+
 });

@@ -11,13 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
 
-
-  <div class="actions">
-    <%= form.submit %>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-8 mx-auto">
+      <h2 class='title'>Nom de la discussion</h2>
+      <%= form.text_field :title, class: 'form-control', placeholder: 'Titre'%>
+        <%= form.submit 'Créer', class: 'btn btn-success'%>
+    </div>
   </div>
+</div>
 <% end %>

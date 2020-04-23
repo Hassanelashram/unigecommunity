@@ -1,10 +1,10 @@
-
+<% content_for :title, "#{@topic.title} | Discussion" %>
 <div class="container my">
   <div class="row">
     <div class="col-12">
     <strong><h2>Sujet de la discussions: </strong> <%= @topic.title %></h2>
     <p>Publier par <%= @topic.user.name if present? %> il y a <%= time_ago_in_words(@topic.created_at) %> </p>
-    <p><%= @topic.opinions.count %> opinion</p>
+    <p><i class="fas fa-comments "></i> <%= @topic.opinions.count %> </p>
     </div>
   </div>
 
@@ -24,10 +24,12 @@
     Plus de discussions:
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">L'amour est dans le pré  (+34 opinions)</li>
-    <li class="list-group-item">Exam de corde a sauter  (+434 opinions)</li>
-    <li class="list-group-item">Data science exam (+234 opinions)</li>
+    <% @topics.each do |t| %>
+    <li class="list-group-item"><i class="fas fa-comments "></i> <%= t.opinions.count %><%= link_to t.title, @topic, class: 'ml-4' %> </li>
+    <% end %>
   </ul>
+  <div class="card-header" >
+  </div>
 </div>
         </div>
       </div>
