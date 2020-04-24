@@ -22,13 +22,12 @@
   <!-- Two first options section -->
   <div data-aos="fade-down" class="row">
     <div class="col-12">
-      <h2 class="title ml-5">Étudiez plus facilement <span class="span1">ensemble</span></h2>
-      <h4 class="subtitle ml-5">Rejoins plus de <%= @user %> Étudiants.</h4>
+      <h2 class="title ml-5">Étudiez plus facilement <span class="">ensemble</span></h2>
     </div>
     <div class="col-sm-12 col-lg-6">
       <div class="header-box1 text-center">
         <br> <br><br>
-        <h3 class="boxtitle">AIDEZ MA COMMUNAUTÉ</h3>
+        <h3 class="boxtitle">AIDER MA COMMUNAUTÉ</h3>
         <%= link_to new_post_path do %>
           <button type="button" data-toggle="modal" data-target="#exampleModal" class="button"><span> CONTRIBUER </span></button>
         <% end %>
@@ -37,7 +36,7 @@
     <div class="col-sm-12 col-lg-6">
       <div class="header-box2 text-center">
         <br> <br> <br>
-        <h3 class="boxtitle">CHERCHEZ UNE CONTRIBUTION</h3>
+        <h3 class="boxtitle">CHERCHER UNE CONTRIBUTION</h3>
         <%= link_to categories_path do %>
           <button class="button"><span>CHERCHEZ </span></button>
         <% end %>
@@ -56,9 +55,38 @@
     <div class="col-12">
       <!-- Search bar section and button end. -->
 
+      <!-- Collections section -->
+      <div data-aos="fade-right" class="row my-5 ">
+        <div class="col-12 mb-3">
+          <h2 class="title">
+            Les Facultés sur <span class="">Unige <i class="fas fa-graduation-cap"></i></span>
+          </h2>
+          <h4 class="subtitle">
+            Prochainement Droit et GSI
+          </h4>
+        </div>
+
+        <% @category.each do |category| %>
+          <div class="text-center mt-4 col-sm-6 col-lg">
+            <div class="collection-box mx-auto card" style="width: 15rem">
+              <% if category.catimage.url.present? %>
+                <%= image_tag category.catimage.url, class: "card-img-top" %>
+              <% end %>
+
+              <div class="collection-body card-body">
+                <h5 class="collection-title"><%= link_to category.category, category %></h5>
+                <p class="card-text"><%= category.posts.count %> contributions</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- Collections end -->
+
+
 
       <h2 class="title">
-        Découvre les contributions de la <span class="span1"> Semaine </span>
+        Découvre les contributions de la <span class=""> Semaine </span>
       </h2>
 
 
@@ -110,33 +138,7 @@
 
 
 
-    <!-- Collections section -->
-    <div data-aos="fade-right" class="row my-5 ">
-      <div class="col-12 mb-3">
-        <h2 class="title">
-          Les Facultés sur <span class="span1">Unige <i class="fas fa-graduation-cap"></i></span>
-        </h2>
-        <h4 class="subtitle">
-          Prochainement Droit et GSI
-        </h4>
-      </div>
 
-      <% @category.each do |category| %>
-        <div class="text-center mt-4 col-sm-6 col-lg">
-          <div class="collection-box mx-auto card" style="width: 15rem">
-            <% if category.catimage.url.present? %>
-              <%= image_tag category.catimage.url, class: "card-img-top" %>
-            <% end %>
-
-            <div class="collection-body card-body">
-              <h5 class="collection-title"><%= link_to category.category, category %></h5>
-              <p class="card-text"><%= category.posts.count %> contributions</p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <!-- Collections end -->
 
 
 </div>

@@ -1,6 +1,6 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
 
-<label for="">Commenter en tant que:</label> <strong><%= current_user.name if user_signed_in?%></strong> 
+<label for="">Commenter en tant que:</label> <strong><%= current_user.name if user_signed_in?%></strong>
   <%= f.text_area :body, class: 'form-control', placeholder: 'Commentaire' %>
   <%= f.submit 'Commenter', class: 'form-control btn btn-success' %>
 
