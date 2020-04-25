@@ -7,7 +7,7 @@
       <%= search_form_for @q do |f| %>
         <div class="row  mx-auto">
           <div class="col-lg-10">
-            <%= f.search_field :title_or_sub_category_category_cont, class: 'form-control search-bar', placeholder: 'Cherchez une contributions (Titre, faculté ou matière)' %>
+            <%= f.search_field :title_or_sub_category_category_cont, class: 'form-control search-bar', placeholder: 'Chercher une contribution (Titre, faculté ou matière)' %>
           </div>
           <div class="col-lg">
             <%= f.submit 'Search', class: 'button' %>
@@ -22,7 +22,12 @@
   <!-- Two first options section -->
   <div data-aos="fade-down" class="row">
     <div class="col-12">
+<<<<<<< HEAD
       <h2 class="title ml-5">Étudiez plus facilement <span class="span1">ensemble</span></h2>
+=======
+      <h2 class="title ml-5">Étudier plus facilement <span class="span1">ensemble</span></h2>
+      <h4 class="subtitle ml-5">Rejoins plus de <%= @user %> Étudiants.</h4>
+>>>>>>> cb60554ab3e5e400fca5baa8f4ccea0c281939f5
     </div>
     <div class="col-sm-12 col-lg-6">
       <div class="header-box1 text-center">
@@ -38,7 +43,7 @@
         <br> <br> <br>
         <h3 class="boxtitle">CHERCHER UNE CONTRIBUTION</h3>
         <%= link_to categories_path do %>
-          <button class="button"><span>CHERCHEZ </span></button>
+          <button class="button"><span>CHERCHER </span></button>
         <% end %>
       </div>
     </div>
@@ -86,7 +91,7 @@
 
 
       <h2 class="title">
-        Découvre les contributions de la <span class="span1"> Semaine </span>
+        Découvrir les contributions de la <span class="span1"> Semaine </span>
       </h2>
 
 
