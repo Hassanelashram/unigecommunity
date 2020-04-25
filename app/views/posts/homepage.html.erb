@@ -22,12 +22,8 @@
   <!-- Two first options section -->
   <div data-aos="fade-down" class="row">
     <div class="col-12">
-<<<<<<< HEAD
-      <h2 class="title ml-5">Étudiez plus facilement <span class="span1">ensemble</span></h2>
-=======
       <h2 class="title ml-5">Étudier plus facilement <span class="span1">ensemble</span></h2>
       <h4 class="subtitle ml-5">Rejoins plus de <%= @user %> Étudiants.</h4>
->>>>>>> cb60554ab3e5e400fca5baa8f4ccea0c281939f5
     </div>
     <div class="col-sm-12 col-lg-6">
       <div class="header-box1 text-center">
@@ -110,11 +106,10 @@
         <%= link_to p do %>
           <div  class="collection-box mx-auto card" style="width: 15rem">
             <!-- Checking if post picture is present, if not putting a default one.  -->
-            <% if p.picture.present? %>
-              <%= image_tag p.picture.url, class: " card-img-top" %>
-            <% else %>
+
+              <%= image_tag p.picture.url, class: " card-img-top" if p.picture.present? %>
               <embed src="<%= p.document.url%>" type="application/pdf"/>
-            <% end %>
+
             <div class="points-thumb">
             <i class="fas fa-heart" ></i> <%=  p.weighted_score %>
             </div>
