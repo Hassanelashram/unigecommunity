@@ -6,7 +6,8 @@
   <div class="row my-4">
     <div class="col-sm-12 col-lg">
         <%= image_tag @post.picture.url, class: 'image-show m-2' if @post.picture.present? %>
-
+        <embed src="<%= @post.document.url%>" type="application/pdf" width="100%" height="600px" />
+        
           <hr>
 
           <div class="row">
@@ -58,12 +59,10 @@
 <div class="row">
   <div class="col-12">
   <h4><strong>Documents:</strong></h4>
-  <% if @post.document.present? %>
-  <i class="far fa-file"></i>  <%= link_to @post.document_identifier, @post.document.url %>
-  <% end %> <br>
-  <% if @post.document_two.present? %>
-  <i class="far fa-file"></i> <%= link_to @post.document_two_identifier, @post.document_two.url %>
-  <% end %>
+  <i class="far fa-file"></i>  <%= link_to @post.document_identifier, @post.document.url if @post.document.present? %>
+   <br>
+  <i class="far fa-file"></i> <%= link_to @post.document_two_identifier, @post.document_two.url if @post.document_two.present? %>
+
   </div>
 </div>
 

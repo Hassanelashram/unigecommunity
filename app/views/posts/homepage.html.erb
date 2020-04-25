@@ -22,7 +22,7 @@
   <!-- Two first options section -->
   <div data-aos="fade-down" class="row">
     <div class="col-12">
-      <h2 class="title ml-5">Étudiez plus facilement <span class="">ensemble</span></h2>
+      <h2 class="title ml-5">Étudiez plus facilement <span class="span1">ensemble</span></h2>
     </div>
     <div class="col-sm-12 col-lg-6">
       <div class="header-box1 text-center">
@@ -59,7 +59,7 @@
       <div data-aos="fade-right" class="row my-5 ">
         <div class="col-12 mb-3">
           <h2 class="title">
-            Les Facultés sur <span class="">Unige <i class="fas fa-graduation-cap"></i></span>
+            Les Facultés sur <span class="span1">Unige <i class="fas fa-graduation-cap"></i></span>
           </h2>
           <h4 class="subtitle">
             Prochainement Droit et GSI
@@ -86,7 +86,7 @@
 
 
       <h2 class="title">
-        Découvre les contributions de la <span class=""> Semaine </span>
+        Découvre les contributions de la <span class="span1"> Semaine </span>
       </h2>
 
 
@@ -108,7 +108,7 @@
             <% if p.picture.present? %>
               <%= image_tag p.picture.url, class: " card-img-top" %>
             <% else %>
-              <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" %>
+              <embed src="<%= p.document.url%>" type="application/pdf"/>
             <% end %>
             <div class="points-thumb">
             <i class="fas fa-heart" ></i> <%=  p.weighted_score %>
