@@ -63,15 +63,14 @@
                 <div class="post-body card-body">
                   <p class="card-text"> <%= p.title %> </p>
                   <%= p.sub_category.category %>
-                  <div class="postbuttons">
-                    <tbody>
-                    <td><%= link_to "Modifier", edit_post_path(p), class: "btn btn-primary" %></td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                      Supprimer
-                    </button></td>
-                    </tbody>
-                  </div>
+
                 </div>
+              </div>
+              <div class="postbuttons text-center">
+                <tbody>
+                <td><%= link_to "Modifier", edit_post_path(p), class: "btn btn-primary" %></td>
+                <td><%= link_to "Supprimer", post_path(p), class: "btn btn-danger", data: { confirm: "Vous etes sure?" }, method: :delete %></td>
+                </tbody>
               </div>
         </div>
           <% end %>

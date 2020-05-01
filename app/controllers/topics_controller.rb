@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @topics = Topic.all.order('created_at DESC').limit(4)
+    @topics = Topic.all.order('created_at DESC')
     @moretopics = Topic.all
   end
 

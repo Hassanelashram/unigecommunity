@@ -17,7 +17,7 @@
               <% @posts.each do |u| %>
 
                 <h4> <%= u.title %>
-                  <%= link_to posts_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <%= link_to post_path(u), data: { confirm: "Vous etes sure?" }, method: :delete do %>
                   <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
                     <% end %>
 
