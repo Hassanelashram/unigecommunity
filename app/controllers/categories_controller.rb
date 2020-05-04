@@ -1,16 +1,31 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_level_of_category, only: [:create]
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :create, :new]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.where(parent_id: nil).order('category ASC')
+    @categories = Category.where(parent_id: nil, child_category_parent_id: nil).order('category ASC')
   end
 
   def sub_categories
     parent_cat_id = params[:category_id].to_i
     @categories = Category.where(parent_id: parent_cat_id).select(:id, :category)
+    # options = []
+    # if @categories.present?
+    #   @categories.each do |cat|
+    #     options << { id: cat.id, text: cat.category}
+    #   end
+    # end
+    respond_to do |format|
+      format.json { render json: @categories }
+    end
+  end
+
+  def child_sub_categories
+    parent_cat_id = params[:category_id].to_i
+    @categories = Category.where(child_category_parent_id: parent_cat_id).select(:id, :category)
     # options = []
     # if @categories.present?
     #   @categories.each do |cat|
@@ -31,7 +46,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    if current_user.admin?
+    if true
     @category = Category.new
   else
     redirect_to root_url
@@ -47,10 +62,8 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-
     @category = Category.new(category_params)
-@categories = Category.all
-
+    @categories = Category.all
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, success: 'Bienjouer huchanbe, tu es trop fort!' }
@@ -92,8 +105,15 @@ class CategoriesController < ApplicationController
       @category = Category.find(params[:id])
     end
 
+    def set_level_of_category
+      cat_level = Category.find(params[:category][:parent_id])
+      if cat_level.check_level_of_category? == 1
+        params[:category].delete(:parent_id)
+        params[:category].merge!(:child_category_parent_id => cat_level.id.to_s)
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:category, :catimage, :parent_id)
+      params.require(:category).permit(:category, :catimage, :parent_id, :child_category_parent_id)
     end
 end

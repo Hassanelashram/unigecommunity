@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     get :sub_categories
   end
 
+  resources :categories do
+    get :child_sub_categories
+  end
+
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
