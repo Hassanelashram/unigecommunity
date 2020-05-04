@@ -1,13 +1,15 @@
 <% content_for :title, "#{@post.title} | Unigecommunity" %>
-
+<% content_for :description, "#{@post.body}" %>
 
 
 <div class="container">
   <div class="row my-4">
     <div class="col-sm-12 col-lg">
+      <% if @post.picture.present? %>
         <%= image_tag @post.picture.url, class: 'image-show m-2' if @post.picture.present? %>
-        <embed src="<%= @post.document.url%>" type="application/pdf" />
-
+      <% else %>
+        <embed style='width: 100%; height: 600px;' src="<%= @post.document.url%>" type="application/pdf" />
+      <% end %>
           <hr>
 
           <div class="row">

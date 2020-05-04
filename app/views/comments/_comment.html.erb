@@ -1,10 +1,10 @@
 
-<% if current_user.id == comment.user.id %>
-<%= link_to [comment.post, comment], method: :delete do %>
-<i style='color: red' class="fas fa-trash-alt"></i>
-<% end %>
-<% end %>
-<h4> <%= comment.name %> <%= link_to comment.user.name, userprofile_path(comment.user) %> à dis: </h4>
+  <% if current_user.id == comment.user.id %>
+  <%= link_to [comment.post, comment], method: :delete do %>
+  <i style='color: red' class="fas fa-trash-alt"></i>
+  <% end %>
+  <% end %>
+    <h4> <%= comment.name %> <%= link_to comment.user.name, userprofile_path(comment.user) %> à dis: </h4>
 
 <h6> <%= comment.body %></h6><br>
 <em>il y a <%= time_ago_in_words(comment.created_at) %></em>

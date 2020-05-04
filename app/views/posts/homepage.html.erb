@@ -1,4 +1,5 @@
 <% content_for :title, "Unigecommunity" %>
+<% content_for :description, "Rejoins les étudiants de l'université de Genève et échangez vos notes et astuces pour étudier. Une plateform exclusive pour l'unige." %>
     <div class="jumbotron jumbotron-fluid">
       <div class="jumbocontainer">
         <h2 class="display-4">Bienvenue à UnigeCommunity</h2>
@@ -23,7 +24,7 @@
   <div data-aos="fade-down" class="row">
     <div class="col-12">
       <h2 class="title ml-5">Étudier plus facilement <span class="span1">ensemble</span></h2>
-      
+
     </div>
     <div class="col-sm-12 col-lg-6">
       <div class="header-box1 text-center">
@@ -107,9 +108,11 @@
           <div  class="collection-box mx-auto card" style="width: 15rem">
             <!-- Checking if post picture is present, if not putting a default one.  -->
 
-              <%= image_tag p.picture.url, class: " card-img-top" if p.picture.present? %>
-              <embed src="<%= p.document.url%>" type="application/pdf"/>
-
+            <% if p.picture.present? %>
+              <%= image_tag p.picture.url, class: " card-img-top" %>
+              <% else %>
+              <embed src=" <%= p.document.url %> " style="width: 100%; height: 100px;" type="application/pdf"  />
+            <% end %>
             <div class="points-thumb">
             <i class="fas fa-heart" ></i> <%=  p.weighted_score %>
             </div>
