@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :set_level_of_category, only: [:create]
+  before_action :set_level_of_category, only: [:create, :update]
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :create, :new]
 
   # GET /categories
@@ -78,6 +78,8 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
+    @category.parent_id = nil
+    @category.child_category_parent_id = nil
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, success: "Bon t'arrete avec tes updates" }
@@ -102,14 +104,17 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
+      debugger
       @category = Category.find(params[:id])
     end
 
     def set_level_of_category
-      cat_level = Category.find(params[:category][:parent_id])
-      if cat_level.check_level_of_category? == 1
-        params[:category].delete(:parent_id)
-        params[:category].merge!(:child_category_parent_id => cat_level.id.to_s)
+      if params[:category][:parent_id].present?
+        cat_level = Category.find(params[:category][:parent_id])
+        if cat_level.check_level_of_category? == 1
+          params[:category].delete(:parent_id)
+          params[:category].merge!(:child_category_parent_id => cat_level.id.to_s)
+        end
       end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
