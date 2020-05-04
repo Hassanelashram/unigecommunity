@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @posts = @q.result.order(:cached_votes_score => :desc).limit(12)
     #@posts = Post.order("created_at DESC").limit(12)
-    @category = Category.where(parent_id: nil).limit(4)
+    @category = Category.where(parent_id: nil, child_category_parent_id: nil).limit(4)
     @category = @category.order("created_at DESC")
     @popular = Post.all.order(:cached_votes_score => :desc)
   end
