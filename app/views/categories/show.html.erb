@@ -7,7 +7,7 @@
       <h2> <%= @category.category %> </h2>
     </div>
 
-    <% if @category.parent_id.nil? %>
+    <% if @category.parent_id.nil? && @category.child_category_parent_id.nil? %>
       <% @category.children.each do |category| %>
         <div class="col-sm-10 col-lg-3 my-3">
           <div class="card m-1 mx-auto" style="max-width: 20rem; height: 100%;">
@@ -23,31 +23,39 @@
       <% end %>
 
     <% else %>
-
-
-
-      <% @category.sub_category_posts.each do |p| %>
-      <div class="col-sm-12  col-lg  my-4">
-        <%= link_to p do %>
-          <div  class="collection-box mx-auto card" style="width: 15rem">
-            <!-- Checking if post picture is present, if not putting a default one.  -->
-            <% if p.picture.present? %>
-              <%= image_tag p.picture.url, class: " card-img-top" %>
-              <% else %>
-              <embed src=" <%= p.document.url %> " style="width: 100%; height: 100px;" type="application/pdf"  />
-            <% end %>
-            <div class="points-thumb">
-            <i class="fas fa-heart"></i> <%=  p.weighted_score%>
-            </div>
-            <div class="post-body card-body">
-              <p class="card-text"> <%= p.title %> </p>
-              <%= p.sub_category.category %>
+      <% if @category.parent_id.present? && @category.child_category_parent_id.nil? #sub_child_category%>
+        <% @category.sub_child_category.each do |category| %>
+          <div class="col-sm-10 col-lg-3 my-3">
+            <div class="card m-1 mx-auto" style="max-width: 20rem; height: 100%;">
+              <div class="card-body">
+                <h5 class="card-title"><%= category.category %></h5><br>
+                <span>   <%= link_to "Voir", category, class: "btn btn-primary" %> </span>
+              </div>
             </div>
           </div>
-      </div>
         <% end %>
-
-
+      <% else %>
+        <% @category.sub_child_category_posts.each do |p| %>
+          <div class="col-sm-12  col-lg  my-4">
+            <%= link_to p do %>
+              <div  class="collection-box mx-auto card" style="width: 15rem">
+                <!-- Checking if post picture is present, if not putting a default one.  -->
+                <% if p.picture.present? %>
+                  <%= image_tag p.picture.url, class: " card-img-top" %>
+                <% else %>
+                  <embed src=" <%= p.document.url %> " style="width: 100%; height: 100px;" type="application/pdf"  />
+                <% end %>
+                <div class="points-thumb">
+                  <i class="fas fa-heart"></i> <%=  p.weighted_score%>
+                </div>
+                <div class="post-body card-body">
+                  <p class="card-text"> <%= p.title %> </p>
+                  <%= p.sub_category.category %>
+                </div>
+              </div>
+              </div>
+            <% end %>
+        <% end %>
       <% end %>
     <% end %>
 

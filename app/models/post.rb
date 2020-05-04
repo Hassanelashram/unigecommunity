@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   acts_as_votable
   belongs_to :category
   belongs_to :sub_category, class_name: 'Category', foreign_key: 'sub_category_id'
+  belongs_to :sub_child_category, class_name: 'Category', foreign_key: 'child_category_parent_id'
   belongs_to :user
   has_many :comments
   mount_uploader :picture, PictureUploader

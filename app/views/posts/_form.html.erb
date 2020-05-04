@@ -20,8 +20,9 @@
 
         <%= form.text_field :title, placeholder: 'Titre', class: 'form-control' %>
         <%= form.text_area :body, placeholder: 'Description', class: 'form-control' %>
-        <%= form.select :category_id, Category.order('category ASC').where(parent_id: nil).map {|c| [c.category, c.id] }, { prompt: "Choisir une faculté:"} %><br><br>
+        <%= form.select :category_id, Category.order('category ASC').where(parent_id: nil, child_category_parent_id: nil).map {|c| [c.category, c.id] }, { prompt: "Choisir une faculté:"} %><br><br>
         <%= form.select :sub_category_id, {}, { prompt: "Choisis une matière:"} %><br><br>
+        <%= form.select :child_category_parent_id, {}, { prompt: "Choose ChildCategory:"} %><br><br>
         <label for="">Télécharger une image:     <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %></label>
         <label for="">Télécharger un Document:     <%= form.file_field :document %></label>
         <label for="">Télécharger un autre:     <%= form.file_field :document_two %></label>
@@ -51,7 +52,6 @@
                 },
                 success: function(data) {
                     console.log('data', data);
-
                     var sub_data = [];
                     data.forEach(element => {
                         sub_data.push({id: element.id, text: element.category})
@@ -60,7 +60,32 @@
                     $("#post_sub_category_id").empty().select2({
                         data: sub_data
                     });
+                }
+            });
+        }).trigger('change');
 
+        $("#post_child_category_parent_id").select2();
+        $("#post_sub_category_id").select2().change(function() {
+            $("#post_sub_category_id").select2();
+            var category_id = $(this).val();
+            console.log('category_id', category_id);
+            $.ajax({
+                url: '/categories/' + category_id + '/child_sub_categories',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    category_id: category_id
+                },
+                success: function(data) {
+                    console.log('data', data);
+                    var sub_data = [];
+                    data.forEach(element => {
+                        sub_data.push({id: element.id, text: element.category})
+                    });
+
+                    $("#post_child_category_parent_id").empty().select2({
+                        data: sub_data
+                    });
                 }
             });
         }).trigger('change');

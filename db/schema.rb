@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_130532) do
+ActiveRecord::Schema.define(version: 2020_05_03_152852) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
@@ -18,12 +18,22 @@ ActiveRecord::Schema.define(version: 2020_04_22_130532) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "catimage"
     t.integer "parent_id"
+    t.integer "child_category_parent_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.string "name"
     t.text "body"
     t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
+
+  create_table "opinions", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id"
+    t.integer "topic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,6 +56,14 @@ ActiveRecord::Schema.define(version: 2020_04_22_130532) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.integer "child_category_parent_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
