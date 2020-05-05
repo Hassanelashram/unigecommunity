@@ -10,64 +10,64 @@
     <!-- Search bar section on index and the button. -->
     <div class="col-12">
       <%= search_form_for @q do |f| %>
-        <div class="row">
-          <div class="col-lg-10">
-            <%= f.search_field :title_or_sub_category_category_cont, class: 'form-control search-bar', placeholder: 'Cherchez une contributions (Titre, faculté ou matière)' %>
-          </div>
-          <div class="col-lg-2">
-            <%= f.submit 'Search', class: 'button' %>
-          </div>
+      <div class="row">
+        <div class="col-lg-10">
+          <%= f.search_field :title_or_sub_category_category_cont, class: 'form-control search-bar', placeholder: 'Cherchez une contributions (Titre, faculté ou matière)' %>
         </div>
+        <div class="col-lg-2">
+          <%= f.submit 'Search', class: 'button' %>
+        </div>
+      </div>
       <% end %>
       <!-- Search bar section and button end. -->
     </div>
     <div class="col-12">
-        Trier par:
+      Trier par:
       <%= sort_link(@q, :cached_votes_up) do%>
-    <h4 class='btn btn-success'>Moins populaire</h4>
+      <h4 class='btn btn-success'>Moins populaire</h4>
       <% end %>
 
       <%= sort_link(@q, :created_at, default_order: :DESC) do%>
-    <h4 class='btn btn-success'>Plus récents</h4>
+      <h4 class='btn btn-success'>Plus récents</h4>
       <% end %>
 
     </div>
-    </div>
+  </div>
 
-    <div data-aos="" class="row">
+  <div data-aos="" class="row">
 
     <!-- Displaying the most recent posts. Only 4  -->
     <% @posts.each do |p| %>
-      <div class="col-sm-12  col-lg  my-4">
-        <%= link_to p do %>
-          <div  class="collection-box mx-auto card" style="width: 15rem">
-            <!-- Checking if post picture is present, if not putting a default one.  -->
-            <% if p.picture.present? %>
-              <%= image_tag p.picture.url, class: " card-img-top" %>
-              <% else %>
-              <embed src=" <%= p.document.url %> " style="width: 100%; height: 100px;" type="application/pdf"  />
-            <% end %>
-            <div class="points-thumb">
+    <div class="col-sm-12  col-lg  my-4">
+      <%= link_to p do %>
+      <div  class="collection-box mx-auto card" style="width: 15rem">
+        <!-- Checking if post picture is present, if not putting a default one.  -->
+        <% if p.picture.present? %>
+        <%= image_tag p.picture.url, class: " card-img-top" %>
+        <% else %>
+        <embed src=" <%= p.document.url %> " style="width: 100%; height: 100px;" type="application/pdf"  />
+          <% end %>
+          <div class="points-thumb">
             <i class="fas fa-heart"></i> <%=  p.weighted_score%>
-            </div>
-            <div class="post-body card-body">
-              <p class="card-text"> <%= p.title %> </p>
-              <%= p.sub_child_category.category %>
-            </div>
           </div>
+          <div class="post-body card-body">
+            <p class="card-text"> <%= p.title %> </p>
+            <%= p.sub_child_category.category %>
+          </div>
+        </div>
       </div>
-        <% end %>
-    <% end %>
+      <% end %>
+      <% end %>
     </div>
     <!-- Displaying the posts end -->
 
 
-</div>
+  </div>
 
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-      AOS.init({
-          duration: 2000
-      });
+    AOS.init({
+      duration: 2000
+    });
   </script>

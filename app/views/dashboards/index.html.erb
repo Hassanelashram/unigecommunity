@@ -16,13 +16,13 @@
             <div class="card-body">
               <% @posts.each do |u| %>
 
-                <h4> <%= u.title %>
-                  <%= link_to post_path(u), data: { confirm: "Vous etes sure?" }, method: :delete do %>
-                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
-                    <% end %>
+              <h4> <%= u.title %>
+                <%= link_to post_path(u), data: { confirm: "Vous etes sure?" }, method: :delete do %>
+                <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                <% end %>
 
-                </h4>
-        <% end %>
+              </h4>
+              <% end %>
             </div>
           </div>
         </div>
@@ -40,13 +40,13 @@
             <div class="card-body">
               <% @users.each do |u| %>
 
-                <h4> <%= u.name %> (number: <%= u.id%>)
-                  <%= link_to post_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
-                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
-                    <% end %>
+              <h4> <%= u.name %> (number: <%= u.id%>)
+                <%= link_to post_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                <% end %>
 
-                </h4>
-        <% end %>
+              </h4>
+              <% end %>
             </div>
           </div>
         </div>
@@ -64,12 +64,12 @@
             <div class="card-body">
               <% @topics.each do |u| %>
 
-                <h4> <%= u.title %>
-                  <%= link_to topic_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
-                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
-                    <% end %>
+              <h4> <%= u.title %>
+                <%= link_to topic_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                <% end %>
 
-                </h4>
+              </h4>
 
               <% end %>
             </div>
@@ -93,14 +93,14 @@
             <div class="card-body">
               <% @categories.each do |u| %>
 
-                <h4> <%= u.category %>
-                  <%= link_to categories_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
-                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
-                    <% end %>
-                </h4>
-                <hr>
+              <h4> <%= u.category %>
+                <%= link_to categories_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
                 <% end %>
-                <%= link_to 'Create new', new_category_path, class: 'btn btn-success' %>
+              </h4>
+              <hr>
+              <% end %>
+              <%= link_to 'Create new', new_category_path, class: 'btn btn-success' %>
             </div>
           </div>
         </div>
@@ -119,14 +119,14 @@
             <div class="card-body">
               <% @opinions.each do |u| %>
 
-                <h4> <%= u.body %> <strong>by user number <%= u.user_id %></strong>
-                  <%= link_to [u.topic, u], data: { confirm: "Are you sure?" }, method: :delete do%>
-                  <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
-                  <hr>
-                    <% end %>
+              <h4> <%= u.body %> <strong>by user number <%= u.user_id %></strong>
+                <%= link_to [u.topic, u], data: { confirm: "Are you sure?" }, method: :delete do%>
+                <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
+                <hr>
+                <% end %>
 
-                </h4>
-        <% end %>
+              </h4>
+              <% end %>
             </div>
           </div>
         </div>

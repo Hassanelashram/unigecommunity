@@ -4,40 +4,40 @@
 
 
 
-<div class="row  my-5">
+  <div class="row  my-5">
 
 
 
 
-<h2 class="text-center col-12"> Facultés </h2>
+    <h2 class="text-center col-12"> Facultés </h2>
 
-<div class="dropdown col-12">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Facultés
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%  @categories.each do |category| %>
-      <%= link_to category.category , category , class: 'dropdown-item' %>
-  <% end %>
-  </div>
-</div>
-
-
-<% @categories.each do |category| %>
-  <div class="text-center mt-4 col-sm-10 col-lg">
-    <div class="collection-box card mx-auto" style="width: 15rem">
-      <% if category.catimage.url.present? %>
-        <%= image_tag category.catimage.url, class: "card-img-top" %>
-      <% end %>
-      <div class="collection-body card-body">
-        <h5 class="collection-title"><%= link_to category.category, category %></h5>
-
+    <div class="dropdown col-12">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Facultés
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%  @categories.each do |category| %>
+        <%= link_to category.category , category , class: 'dropdown-item' %>
+        <% end %>
       </div>
     </div>
+
+
+    <% @categories.each do |category| %>
+    <div class="text-center mt-4 col-sm-10 col-lg">
+      <div class="collection-box card mx-auto" style="width: 15rem">
+        <% if category.catimage.url.present? %>
+        <%= image_tag category.catimage.url, class: "card-img-top" %>
+        <% end %>
+        <div class="collection-body card-body">
+          <h5 class="collection-title"><%= link_to category.category, category %></h5>
+
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+
   </div>
-<% end %>
-
-
-
-</div>
 </div>
