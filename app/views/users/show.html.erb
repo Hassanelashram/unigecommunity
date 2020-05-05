@@ -1,47 +1,47 @@
 <% content_for :title, "#{@user.name}" %>
 <% content_for :description, "rejoins #{@user.name} sur la plateforme exclusive de l'unige" %>
 
-      <div class=" jumbotronprofile jumbotron  jumbotron-fluid">
-        <div class="row text-center">
-            <!-- Displaying the profile picture of the user -->
-          <div class="col-12">
-            <%= image_tag @user.avatar.url, class: 'avatar mx-auto' if @user.avatar.present? %>
-          </div>
-        </div>
-      </div>
+<div class=" jumbotronprofile jumbotron  jumbotron-fluid">
+  <div class="row text-center">
+    <!-- Displaying the profile picture of the user -->
+    <div class="col-12">
+      <%= image_tag @user.avatar.url, class: 'avatar mx-auto' if @user.avatar.present? %>
+    </div>
+  </div>
+</div>
 
-      <div class="container my-5">
-        <div class="row text-center">
-          <div class="col-sm-12 col-lg-12 profilebox m-2 ">
-            <h4 class='profilename '>
-              <%= @user.name %> <hr>
-              <span class='profilecategory'> <%= @user.category.category %> <span> <hr>
-            </h4>
-            <%= mail_to @user.email, subject: 'Unigecommunity', body: "Your content #{request.original_url}" do %>
-              <i class="fas fa-envelope"> Envoyer un Email</i>
-              <% end %>
+<div class="container my-5">
+  <div class="row text-center">
+    <div class="col-sm-12 col-lg-12 profilebox m-2 ">
+      <h4 class='profilename '>
+        <%= @user.name %> <hr>
+        <span class='profilecategory'> <%= @user.category.category %> <span> <hr>
+        </h4>
+        <%= mail_to @user.email, subject: 'Unigecommunity', body: "Your content #{request.original_url}" do %>
+        <i class="fas fa-envelope"> Envoyer un Email</i>
+        <% end %>
+      </div>
+      <div class="col-sm-12 col-lg-12 m-2  profilebox">
+        <h4 class='boxtitle'>Badges:
+          <span style='font-size: 1rem;'>
+            <button type="button"
+            style="border: none; background-color: transparent;font-size: 2rem; color: green;"
+            data-toggle="modal" data-target="#exampleModal1">
+            <i class="fas fa-info-circle"></i>
+          </button>
+        </span>
+      </h4>
+      <div class="row">
+        <div class="col">
+          <div class="badge" >
+            <img style='width: 100px;' src=<%= badge_image %>   alt="badge icon for the student">
           </div>
-          <div class="col-sm-12 col-lg-12 m-2  profilebox">
-            <h4 class='boxtitle'>Badges:
-              <span style='font-size: 1rem;'>
-                <button type="button"
-                style="border: none; background-color: transparent;font-size: 2rem; color: green;"
-                data-toggle="modal" data-target="#exampleModal1">
-                <i class="fas fa-info-circle"></i>
-                </button>
-              </span>
-            </h4>
-              <div class="row">
-                <div class="col">
-                  <div class="badge" >
-                    <img style='width: 100px;' src=<%= badge_image %>   alt="badge icon for the student">
-                  </div>
-                    <h4><%= @title %></h4>
-                </div>
-              </div>
-          </div>
+          <h4><%= @title %></h4>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -50,23 +50,26 @@
     <div class="col-12">
       <h1 class='title'>Contributions:</h1>
     </div>
-      <% @user.posts.each do |p| %>
-        <div class="col-sm-12  col-lg  my-4">
-          <%= link_to p do %>
-            <div  class="collection-box mx-auto card" style="width: 15rem">
-              <!-- Checking if post picture is present, if not putting a default one.  -->
-                <%= image_tag p.picture.url, class: " card-img-top" if p.picture.present?  %>
-                <%= image_tag 'https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', class: "card-img-top" if !p.picture.present? %>
-                  <div class="points-thumb">
-                    <i class="fas fa-heart"></i> <%=  p.weighted_score%>
-                  </div>
-            <div class="post-body card-body">
-              <p class="card-text"> <%= p.title %> </p>
-              <%= p.sub_category.category %>
-            </div>
-          </div>
+    <% @user.posts.each do |p| %>
+    <div class="col-sm-12  col-lg  my-4">
+      <%= link_to p do %>
+      <div  class="collection-box mx-auto card" style="width: 15rem">
+        <!-- Checking if post picture is present, if not putting a default one.  -->
+        <% if p.picture.present? %>
+              <%= image_tag p.picture.url, class: " card-img-top" %>
+              <% else %>
+              <embed src=" <%= p.document.url %> " style="width: 100%; height: 100px;" type="application/pdf"  />
+            <% end %>
+        <div class="points-thumb">
+          <i class="fas fa-heart"></i> <%=  p.weighted_score%>
+        </div>
+        <div class="post-body card-body">
+          <p class="card-text"> <%= p.title %> </p>
+          <%= p.sub_child_category.category %>
+        </div>
+      </div>
     </div>
-      <% end %>
+    <% end %>
     <% end %>
 
 
@@ -87,51 +90,51 @@
                 <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= "Pour avoir rejoins UnigeCommunity">
                   <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/2826/2826429.svg"   alt="">
                   <h5><i class="fas fa-info-circle"></i></h5>
-                  </div>
+                </div>
               </div>
-                <div class="col-sm-12 col-lg">
-                  <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= "Pour avoir contribuer 2 fois ou plus" ">
+              <div class="col-sm-12 col-lg">
+                <div class="badge"  data-toggle= "tooltip" data-placement= "top" title="Pour avoir contribuer 2 fois ou plus">
                   <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/2828/2828290.svg"   alt="">
                   <h5><i class="fas fa-info-circle"></i></h5>
-                  </div>
+                </div>
               </div>
 
               <div class="col-sm-12 col-lg">
                 <div class="badge"  data-toggle= "tooltip" data-placement= "top" title= "Pour avoir contribuer 10 fois ou plus">
-                <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/1144/1144441.svg"   alt="">
-                <h5><i class="fas fa-info-circle"></i></h5>
+                  <img style='width: 100px;' src="https://image.flaticon.com/icons/svg/1144/1144441.svg"   alt="">
+                  <h5><i class="fas fa-info-circle"></i></h5>
                 </div>
+              </div>
+
+
             </div>
-
-
-          </div>
-          <hr>
-          <div class="text-center">
-            <h4>Que sont les badges?</h4>
-            <p>Simplement une manière de differencier les utilisateurs.</p>
+            <hr>
+            <div class="text-center">
+              <h4>Quels sont les badges?</h4>
+              <p>Simplement une manière de différencier les utilisateurs.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-<!-- Modal for deleting post -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Vous êtes sure?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Vous ne pourrez plus le récuperez.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger"><%= link_to "Supprimer", p, method: :delete, class: "btn btn-danger" %></button>
+      <!-- Modal for deleting post -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Vous êtes sure?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Vous ne pourrez plus le récuperez.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger"><%= link_to "Supprimer", p, method: :delete, class: "btn btn-danger" %></button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     </div>
   </div>

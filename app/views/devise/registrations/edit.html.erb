@@ -8,7 +8,7 @@
     <div class="col-md-6 my-5 edit-box text-center mx-auto">
       <h2>Modifier son profile</h2>
       <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-      <%= f.select :category_id, Category.order('category ASC').where(parent_id: nil).map {|c| [c.category, c.id] }, { prompt: "Choisis une faculté:"} %>
+      <%= f.select :category_id, Category.order('category ASC').where(parent_id: nil, child_category_parent_id: nil).map {|c| [c.category, c.id] }, { prompt: "Choisis une faculté:"} %>
       <%= f.email_field :email, autofocus: true, class: 'mb-3 form-control'  %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -19,7 +19,7 @@
       <br />
       <%= f.password_field :password, placeholder: "nouveau mot de passe", class: "form-control" %>
       <%= f.password_field :password_confirmation, placeholder: "Confirmer mot de passe", class: "form-control" %>
-      <i>(Laisser vide si tu ne vas pas changer le mot de passe)</i>
+      <i>(Ne pas remplir si aucune modification de mdp)</i>
 
   <br>
 

@@ -41,7 +41,7 @@
               <% @users.each do |u| %>
 
                 <h4> <%= u.name %> (number: <%= u.id%>)
-                  <%= link_to posts_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <%= link_to post_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
                   <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
                     <% end %>
 
@@ -65,7 +65,7 @@
               <% @topics.each do |u| %>
 
                 <h4> <%= u.title %>
-                  <%= link_to topics_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
+                  <%= link_to topic_path(u), data: { confirm: "Are you sure?" }, method: :delete do%>
                   <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
                     <% end %>
 

@@ -21,8 +21,8 @@
         <%= form.text_field :title, placeholder: 'Titre', class: 'form-control' %>
         <%= form.text_area :body, placeholder: 'Description', class: 'form-control' %>
         <%= form.select :category_id, Category.order('category ASC').where(parent_id: nil, child_category_parent_id: nil).map {|c| [c.category, c.id] }, { prompt: "Choisir une faculté:"} %><br><br>
-        <%= form.select :sub_category_id, {}, { prompt: "Choisis une matière:"} %><br><br>
-        <%= form.select :child_category_parent_id, {}, { prompt: "Choose ChildCategory:"} %><br><br>
+        <%= form.select :sub_category_id, {}, { prompt: "Choisir une section:"} %><br><br>
+        <%= form.select :child_category_parent_id, {}, { prompt: "Choisir une matière:"} %><br><br>
         <label for="">Télécharger une image:     <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %></label>
         <label for="">Télécharger un Document:     <%= form.file_field :document %></label>
         <label for="">Télécharger un autre:     <%= form.file_field :document_two %></label>
