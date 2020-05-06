@@ -120,7 +120,7 @@
               <% @opinions.each do |u| %>
 
               <h4> <%= u.body %> <strong>by user number <%= u.user_id %></strong>
-                <%= link_to [u.topic, u], data: { confirm: "Are you sure?" }, method: :delete do%>
+                <%= link_to root_url, method: :delete do%>
                 <i style='color: red;font-size: 0.8rem;' class="fas fa-trash-alt ml-4"></i>
                 <hr>
                 <% end %>
