@@ -54,7 +54,7 @@
             <h4 class=''><strong>Faculté: </strong> <%= @post.category.category %></h4>
           </div>
           <div class="col">
-            <h4>Matière: <%= @post.sub_child_category.category %></h4>
+            <h4>Matière: <%= @post&.sub_child_category&.category %></h4>
           </div>
         </div>
         <hr>
